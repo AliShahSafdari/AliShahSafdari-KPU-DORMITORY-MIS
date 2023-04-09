@@ -1,0 +1,54 @@
+<!-- Content -->
+<div class="content-area py-1">
+    <div class="container-fluid">
+        <h4>نمایش کتاب ها</h4>
+        <ol class="breadcrumb no-bg mb-1">
+            <li class="breadcrumb-item"><a href="/">خانه</a></li>
+            <li class="breadcrumb-item"><a href="/office-management">مدیریت اداری</a></li>
+            <li class="breadcrumb-item active">نمایش کتاب ها</li>
+        </ol>
+        <div class="box box-block bg-white">
+            <table class="table table-striped table-bordered dataTable" id="table-1">
+                <thead>
+                    <tr>
+                        <th>نام کتاب</th>
+                        <th>جلد</th>
+                        <th>منزل</th>
+                        <th>بلاک</th>
+                        <th>سال</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(let book of books){ %>
+                        <tr>
+                            <td>
+                                <%= book.bookName %>
+                            </td>
+                            <td>
+                                <%= book.skinNum %>
+                            </td>
+                            <td>
+                                <%= book.floorNum %>
+                            </td>
+                            <td>
+                                <%= book.blockNum %>
+                            </td>
+                            <td>
+                                <%= book.year %>
+                            </td>
+                        </tr>
+                        <% } %>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>نام کتاب</th>
+                        <th>جلد</th>
+                        <th>منزل</th>
+                        <th>بلاک</th>
+                        <th>سال</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,76 @@
+<!-- table -->
+<!-- Content -->
+<div class="content-area py-1">
+    <div class="container-fluid">
+        <!-- <h4>نمایش لیست حواله وارده</h4>
+        <ol class="breadcrumb no-bg mb-1">
+            <li class="breadcrumb-item"><a href="index.html">خانه</a></li>
+            <li class="breadcrumb-item"><a href="/goods-management">مدیریت جنسی</a></li>
+            <li class="breadcrumb-item active">نمایش لیست حواله وارده</li>
+        </ol> -->
+
+
+        <% if(entryDocument.length>0){ %>
+        <div class="box box-block bg-white table-responsive">
+            <table class="table table-striped table-bordered dataTable" id="table-2">
+                <thead>
+                    <tr>
+                        <th>شماره</th>
+                        <th>نمبر حواله</th>
+                        <th>تاریخ حواله</th>
+                        <th>تاریخ ورود حواله</th>
+                        <th>مبداء</th>
+                        <th>مرسل الیه</th>
+                        <th>خلاصه حواله</th>
+                        <% if(user.position!=="آمر لیلیه" ){ %>
+                        <th>نمایش</th>
+                        <%}%>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% let i=1;%>
+
+                        <% for(let entryD of entryDocument){ %>
+                    <tr>
+
+                        <td><%=i++%></td>
+                        <td>
+                            <%=entryD.docNum %>
+                        </td>
+                        <td>
+                            <%=entryD.docDate %>
+                        </td>
+                        <td>
+                            <%= entryD.docEntryDate %>
+                        </td>
+                        <td>
+                            <%= entryD.from %>
+                        </td>
+                        <td>
+                            <%= entryD.to %>
+                        </td>
+                        <td>
+                            <%= entryD.summary %>
+                        </td>
+                        <% if(user.position!=="آمر لیلیه" ){ %>
+                        <td>
+                            <a href="/goods-management/show-oneEntryDocument/<%=entryD._id %>" id="show_student">
+                                <span class="fa fa-eye"></span>
+                            </a>
+                        </td>
+                        <%}%>                       
+    
+                    </tr>
+                    <% } %>
+                        </tbody>
+            </table>
+        </div>
+
+
+        <% }else{ %>
+        <div class="m-2">
+            <h2 class="center">در حال حاضر هیج حواله وارده ثبت نشد</h2>
+        </div>
+        <% } %>
+    </div>
+</div>

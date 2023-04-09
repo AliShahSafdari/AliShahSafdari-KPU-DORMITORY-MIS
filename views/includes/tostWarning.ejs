@@ -1,0 +1,12 @@
+<% if(message.length>0 ){ %>
+
+    <script>
+        $(document).ready(function () {
+            toastr.options = {
+                "positionClass": "toast-top-center",
+            }
+            toastr.warning("<%= message %>", "تبریک", { timeOut: 6000 });
+        });
+    </script>
+
+    <% } %>

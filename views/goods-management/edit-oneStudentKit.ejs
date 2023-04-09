@@ -1,0 +1,311 @@
+<!-- Content -->
+<div class="content-area py-1">
+    <div class="container-fluid">
+        <h4>ویرایش البسه محصل</h4>
+        <ol class="breadcrumb no-bg mb-1">
+            <li class="breadcrumb-item"><a href="index.html">خانه</a></li>
+            <li class="breadcrumb-item"><a href="/goods-management">مدیریت جنسی</a></li>
+            <li class="breadcrumb-item active">ویرایش البسه محصل</li>
+        </ol>
+
+        <div class="box box-block bg-white">
+            <h5 style="text-align: center;">ویرایش البسه محصل در دیپو - یکشنبه 21 اسد سال 1402</h5>
+            <br>
+
+            <form action="/goods-management/show-oneStudentKit/<%=studentKit._id%>" method="POST" class="<% if(typeof errors!==undefined){ errors.forEach(error=>{
+                    if(error.name==='exist'){%>
+                has-danger
+                <%} }) } %> ">
+
+
+
+                <br>
+                <div class="form-group row">
+
+
+                    <label for="example-text-input5" class="col-md-1 col-form-label">دوشک</label>
+                    <div class="col-md-3<% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='mattress'){%>
+                    has-danger
+                    <%} }) } %>">
+                        <input class="form-control" type="number" name="mattress" value="<%= studentKit.mattress %>"
+                            id="example-text-input5" required>
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='mattress'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+                    <label for="example-text-input9" class="col-md-1 col-form-label">بالشت</label>
+                    <div class="col-md-3<% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='pillow'){%>
+                            has-danger
+                    <%} }) } %>">
+                        <input class="form-control" type="number" name="pillow" placeholder="بالشت"
+                            value="<%= studentKit.pillow %>" id="example-text-input9" required>
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='pillow'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+
+                    <label for="example-text-input10" class="col-md-1 col-form-label"> روجایی</label>
+                    <div class="col-md-3<% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='coverlet'){%>
+                            has-danger
+                    <%} }) } %>">
+                        <input class="form-control" type="number" name="coverlet" value="<%= studentKit.coverlet %>"
+                            placeholder="روجایی" id="example-text-input10" required>
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='coverlet'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+                </div>
+                <div class="form-group row">
+
+                    <label for="example-text-input5" class="col-md-1 col-form-label">کمپل</label>
+                    <div class="col-md-3<% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='quilt'){%>
+                            has-danger
+                    <%} }) } %>">
+                        <input class="form-control" type="number" name="quilt" placeholder="کمپل"
+                            value="<%= studentKit.quilt %>" id="example-text-input5" required>
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='quilt'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+                    <label for="example-text-input9" class="col-md-1 col-form-label">چپرکت</label>
+                    <div class="col-md-3<% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='bed'){%>
+                            has-danger
+                    <%} }) } %>">
+                        <input class="form-control" type="number" name="bed" value="<%= studentKit.bed %>"
+                            placeholder="چپرکت" id="example-text-input9" required>
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='bed'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+                    <label for="example-text-input10" class="col-md-1 col-form-label"> آینه روی</label>
+                    <div class="col-md-3<% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='mirror'){%>
+                            has-danger
+                    <%} }) } %>">
+                        <input class="form-control" type="number" name="mirror" value="<%= studentKit.mirror %>"
+                            placeholder="آینه روی" id="example-text-input10" required>
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='mirror'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+
+                    <label for="example-text-input5" class="col-md-1 col-form-label">پرده</label>
+                    <div class="col-md-3<% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='windowShade'){%>
+                            has-danger
+                    <%} }) } %>">
+                        <input class="form-control" type="number" name="windowShade"
+                            value="<%= studentKit.windowShade %>" placeholder="پرده" id="example-text-input5" required>
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='windowShade'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+                    <label for="example-text-input9" class="col-md-1 col-form-label">فرش</label>
+                    <div class="col-md-3<% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='carpet'){%>
+                            has-danger
+                    <%} }) } %>">
+                        <input class="form-control" type="number" value="<%= studentKit.carpet %>" name="carpet"
+                            placeholder="فرش" id="example-text-input9" required>
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='carpet'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+                    <label for="example-text-input10" class="col-md-1 col-form-label"> میز</label>
+                    <div class="col-md-3<% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='table'){%>
+                            has-danger
+                    <%} }) } %>">
+                        <input class="form-control" type="number" name="table" value="<%= studentKit.table %>"
+                            placeholder="میز" id="example-text-input10" required>
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='table'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+
+
+
+                    <label for="example-text-input5" class="col-md-1 col-form-label">چوکی</label>
+                    <div class="col-md-3<% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='chair'){%>
+                            has-danger
+                    <%} }) } %>">
+                        <input class="form-control" type="number" name="chair" value="<%= studentKit.chair %>"
+                            placeholder="چوکی" id="example-text-input5" required>
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='chair'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+
+                    <label for="example-text-input1" class="col-md-1 col-form-label"> سال تحویل جنس</label>
+                    <div class="col-xs-3 <% if(typeof errors!== undefined){
+                errors.forEach(error=>{
+                    if(error.name==='Dates'){%>
+                        has-danger
+                <%} }) } %>">
+                        <input class="form-control" type="number" value="<%= studentKit.Dates %>" name="Dates"
+                            id="example-text-input5">
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+                    if(error.name==='Dates'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+
+
+                    <label for="example-text-input1" class="col-md-1 col-form-label">نام کتاب راجستر
+                    </label>
+                    <div class="col-md-3 <% if(typeof errors!== undefined){
+					errors.forEach(error=>{
+						if(error.name==='nameBook'){%>
+						has-danger
+						<%} }) } %>">
+                        <select name="nameBook" class="form-control">
+                            <% bookNames.forEach(b => { %>
+                            <option value="<%= b %>" <% if( b ==studentKit.registerBook_fk.bookName ){%> selected
+                                <% } %>><%=b%>
+                            </option>
+                            <%})%>
+                        </select>
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+						if(error.name==='nameBook'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+                </div>
+                <div class="form-group row">
+
+                    <label for="example-text-input1" class="col-md-1 col-form-label">صفحه کتاب</label>
+                    <div class="col-md-3<% if(typeof errors!== undefined){
+						errors.forEach(error=>{
+						if(error.name==='notExit'){%>
+						has-danger
+						<%} }) } %>">
+                        <select name="page" class="form-control">
+                            <% pages.forEach(p => { %>
+                            <option value="<%= p %> " <% if( p ==studentKit.registerBook_fk.page ){%> selected <% } %>>
+                                <%=p%>
+                            </option>
+                            <%})%>
+                        </select>
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='notExit'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+
+                    <label for="example-text-input1" class="col-md-1 col-form-label">جلد کتاب</label>
+                    <div class="col-md-3 <% if(typeof errors!== undefined){
+					errors.forEach(error=>{
+						if(error.name==='skin'){%>
+						has-danger
+						<%} }) } %>">
+                        <select name="skin" class="form-control">
+                            <% skins.forEach(s => { %>
+                            <option value="<%= s %>" <% if( s ==studentKit.registerBook_fk.skin ){%> selected <% } %>>
+                                <%=s%>
+                            </option>
+                            <%})%>
+                        </select>
+
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+						if(error.name==='skin'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+
+                    <label for="example-text-input1" class="col-md-1 col-form-label">سال</label>
+                    <div class="col-md-3 <% if(typeof errors!== undefined){
+					errors.forEach(error=>{
+						if(error.name==='year'){%>
+						has-danger
+						<%} }) } %>">
+                        <select name="year" class="form-control">
+                            <% years.forEach(y => { %>
+                            <option value="<%= y %> " <% if( y ==studentKit.registerBook_fk.year ){%> selected <% } %>>
+                                <%=y%>
+                            </option>
+                            <%})%>
+                        </select>
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+						if(error.name==='year'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group row">
+                    <div class="col-xs-6">
+                        <label for="example-number-input" class="col-xs-3 col-form-label">ذخیره
+                            کردن</label>
+                        <div class="col-xs-9">
+                            <button type="submit" class="btn btn-primary">ویرایش</button>
+                        </div>
+                    </div>
+                    <div class="col-xs-2"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,590 @@
+<div class="content-area py-1">
+	<div class="container-fluid">
+		<h4>خرید روزانه</h4>
+		<ol class="breadcrumb no-bg mb-1">
+			<li class="breadcrumb-item"><a href="/index">مدیریت ارتزاقی</a></li>
+			<li class="breadcrumb-item active">خرید روزانه</li>
+		</ol>
+
+		<div class="box box-block bg-white">
+			<h5 style="text-align: center;">خرید روزانه</h5>
+			<% if(typeof errors!==undefined){ errors.forEach(error=>{
+				if(error.name === 'ingradient' || error.name === 'amount' || error.name === 'price'){%>
+			<div class="form-control-feedback" style="color: red; text-align: center;">
+				<%= error.message %>
+			</div>
+			<%} }) } %>
+			<br>
+			<% if(path != "/feed-management/daily-purchase-menu") { %>
+			<form action="/feed-management/daily-purchase" method="POST">
+				<input type="hidden" value="m-7" name="ingradientType">
+				<input type="hidden" value="/feed-management/daily-purchase" name="path">
+				<br>
+				<div class="form-group row">
+					<label for="example-text-input1" class="col-md-1 col-form-label">نمبر مکتوب</label>
+					<div class="col-md-3
+					<% if(typeof errors!== undefined){
+						errors.forEach(error=>{
+							if(error.name==='docNumber'){%>
+								has-danger
+						<%} }) } %>
+					">
+						<input class="form-control" type="text" placeholder="0000000000" name="docNumber">
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+						if(error.name==='docNumber'){%>
+						<div class="form-control-feedback">
+							<%= error.message %>
+						</div>
+						<%} }) } %>
+					</div>
+					<label for="example-text-input4" class="col-md-1 col-form-label">تاریخ</label>
+					<div class="col-md-3
+					<% if(typeof errors!== undefined){
+						errors.forEach(error=>{
+							if(error.name==='date'){%>
+								has-danger
+						<%} }) } %>
+					">
+						<input type="date" class="form-control" name="date">
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='date'){%>
+						<div class="form-control-feedback">
+							<%= error.message %>
+						</div>
+						<%} }) } %>
+					</div>
+					<label for="example-text-input1" class="col-md-1 col-form-label">اخذ شده از</label>
+					<div class="col-md-3
+					<% if(typeof errors!== undefined){
+						errors.forEach(error=>{
+							if(error.name==='from'){%>
+								has-danger
+						<%} }) } %>
+					">
+						<input class="form-control" type="text" placeholder="مارکیت سبزی" name="from">
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='from'){%>
+						<div class="form-control-feedback">
+							<%= error.message %>
+						</div>
+						<%} }) } %>
+					</div>
+				</div>
+				<div class="form-group row
+					<% if(typeof errors!== undefined){
+						errors.forEach(error=>{
+							if(error.name==='ingradient_1'){%>
+								has-danger
+					<%} }) } %>
+				">
+					<label for="example-text-input3" class="col-md-1 col-form-label">نام جنس</label>
+					<% if(typeof errors!==undefined){ errors.forEach(error=>{
+						if(error.name==='ingradient_1'){%>
+					<div class="form-control-feedback">
+						<%= error.message %>
+					</div>
+					<%} }) } %>
+					<div class="col-md-3">
+						<input class="form-control" type="text" placeholder="ماده خوراکی" name="ingradient">
+					</div>
+					<label for="example-text-input4" class="col-md-1 col-form-label">مقدار</label>
+					<div class="col-md-3">
+						<input class="form-control" type="number" step="any" placeholder="0.00" name="amount">
+					</div>
+					<label for="example-text-input5" class="col-md-1 col-form-label">قیمت فیات (افغانی)</label>
+					<div class="col-md-3">
+						<input class="form-control" type="number" step="any" placeholder="0.00" name="price">
+					</div>
+				</div>
+				<div class="form-group row
+					<% if(typeof errors!== undefined){
+						errors.forEach(error=>{
+							if(error.name==='ingradient_2'){%>
+								has-danger
+					<%} }) } %>
+				">
+					<label for="example-text-input3" class="col-md-1 col-form-label">نام جنس</label>
+					<% if(typeof errors!==undefined){ errors.forEach(error=>{
+						if(error.name==='ingradient_2'){%>
+					<div class="form-control-feedback">
+						<%= error.message %>
+					</div>
+					<%} }) } %>
+					<div class="col-md-3">
+						<input class="form-control" type="text" placeholder="ماده خوراکی" name="ingradient">
+					</div>
+					<label for="example-text-input4" class="col-md-1 col-form-label">مقدار</label>
+					<div class="col-md-3">
+						<input class="form-control" type="number" step="any" placeholder="0.00" name="amount">
+					</div>
+					<label for="example-text-input5" class="col-md-1 col-form-label">قیمت فیات (افغانی)</label>
+					<div class="col-md-3">
+						<input class="form-control" type="number" step="any" placeholder="0.00" name="price">
+					</div>
+				</div>
+				<div class="form-group row
+					<% if(typeof errors!== undefined){
+						errors.forEach(error=>{
+							if(error.name==='ingradient_3'){%>
+								has-danger
+					<%} }) } %>
+				">
+					<label for="example-text-input3" class="col-md-1 col-form-label">نام جنس</label>
+					<% if(typeof errors!==undefined){ errors.forEach(error=>{
+					if(error.name==='ingradient_3'){%>
+					<div class="form-control-feedback">
+						<%= error.message %>
+					</div>
+					<%} }) } %>
+					<div class="col-md-3">
+						<input class="form-control" type="text" placeholder="ماده خوراکی" name="ingradient">
+					</div>
+					<label for="example-text-input4" class="col-md-1 col-form-label">مقدار</label>
+					<div class="col-md-3">
+						<input class="form-control" type="number" step="any" placeholder="0.00" name="amount">
+					</div>
+					<label for="example-text-input5" class="col-md-1 col-form-label">قیمت فیات (افغانی)</label>
+					<div class="col-md-3">
+						<input class="form-control" type="number" step="any" placeholder="0.00" name="price">
+					</div>
+				</div>
+				<div class="form-group row
+					<% if(typeof errors!== undefined){
+						errors.forEach(error=>{
+							if(error.name==='ingradient_4'){%>
+								has-danger
+					<%} }) } %>
+				">
+					<label for="example-text-input4" class="col-md-1 col-form-label">نام جنس</label>
+					<% if(typeof errors!==undefined){ errors.forEach(error=>{
+					if(error.name==='ingradient_4'){%>
+					<div class="form-control-feedback">
+						<%= error.message %>
+					</div>
+					<%} }) } %>
+					<div class="col-md-3">
+						<input class="form-control" type="text" placeholder="ماده خوراکی" name="ingradient">
+					</div>
+					<label for="example-text-input4" class="col-md-1 col-form-label">مقدار</label>
+					<div class="col-md-3">
+						<input class="form-control" type="number" step="any" placeholder="0.00" name="amount">
+					</div>
+					<label for="example-text-input5" class="col-md-1 col-form-label">قیمت فیات (افغانی)</label>
+					<div class="col-md-3">
+						<input class="form-control" type="number" step="any" placeholder="0.00" name="price">
+					</div>
+				</div>
+				<div class="form-group row
+					<% if(typeof errors!== undefined){
+						errors.forEach(error=>{
+							if(error.name==='ingradient_5'){%>
+								has-danger
+					<%} }) } %>
+				">
+					<label for="example-text-input4" class="col-md-1 col-form-label">نام جنس</label>
+					<% if(typeof errors!==undefined){ errors.forEach(error=>{
+					if(error.name==='ingradient_5'){%>
+					<div class="form-control-feedback">
+						<%= error.message %>
+					</div>
+					<%} }) } %>
+					<div class="col-md-3">
+						<input class="form-control" type="text" placeholder="ماده خوراکی" name="ingradient">
+					</div>
+					<label for="example-text-input4" class="col-md-1 col-form-label">مقدار</label>
+					<div class="col-md-3">
+						<input class="form-control" type="number" step="any" placeholder="0.00" name="amount">
+					</div>
+					<label for="example-text-input5" class="col-md-1 col-form-label">قیمت فیات (افغانی)</label>
+					<div class="col-md-3">
+						<input class="form-control" type="number" step="any" placeholder="0.00" name="price">
+					</div>
+				</div>
+				<div class="form-group row
+					<% if(typeof errors!== undefined){
+						errors.forEach(error=>{
+							if(error.name==='ingradient_6'){%>
+								has-danger
+					<%} }) } %>
+				">
+					<label for="example-text-input4" class="col-md-1 col-form-label">نام جنس</label>
+					<% if(typeof errors!==undefined){ errors.forEach(error=>{
+					if(error.name==='ingradient_6'){%>
+					<div class="form-control-feedback">
+						<%= error.message %>
+					</div>
+					<%} }) } %>
+					<div class="col-md-3">
+						<input class="form-control" type="text" placeholder="ماده خوراکی" name="ingradient">
+					</div>
+					<label for="example-text-input4" class="col-md-1 col-form-label">مقدار</label>
+					<div class="col-md-3">
+						<input class="form-control" type="number" step="any" placeholder="0.00" name="amount">
+					</div>
+					<label for="example-text-input5" class="col-md-1 col-form-label">قیمت فیات (افغانی)</label>
+					<div class="col-md-3">
+						<input class="form-control" type="number" step="any" placeholder="0.00" name="price">
+					</div>
+				</div>
+				<div class="form-group row
+					<% if(typeof errors!== undefined){
+						errors.forEach(error=>{
+							if(error.name==='ingradient_7'){%>
+								has-danger
+					<%} }) } %>
+				">
+					<label for="example-text-input4" class="col-md-1 col-form-label">نام جنس</label>
+					<% if(typeof errors!==undefined){ errors.forEach(error=>{
+					if(error.name==='ingradient_7'){%>
+					<div class="form-control-feedback">
+						<%= error.message %>
+					</div>
+					<%} }) } %>
+					<div class="col-md-3">
+						<input class="form-control" type="text" placeholder="ماده خوراکی" name="ingradient">
+					</div>
+					<label for="example-text-input4" class="col-md-1 col-form-label">مقدار</label>
+					<div class="col-md-3">
+						<input class="form-control" type="number" step="any" placeholder="0.00" name="amount">
+					</div>
+					<label for="example-text-input5" class="col-md-1 col-form-label">قیمت فیات (افغانی)</label>
+					<div class="col-md-3">
+						<input class="form-control" type="number" step="any" placeholder="0.00" name="price">
+					</div>
+				</div>
+				<div class="form-group row
+					<% if(typeof errors!== undefined){
+						errors.forEach(error=>{
+							if(error.name==='ingradient_8'){%>
+								has-danger
+					<%} }) } %>
+				">
+					<label for="example-text-input4" class="col-md-1 col-form-label">نام جنس</label>
+					<% if(typeof errors!==undefined){ errors.forEach(error=>{
+					if(error.name==='ingradient_8'){%>
+					<div class="form-control-feedback">
+						<%= error.message %>
+					</div>
+					<%} }) } %>
+					<div class="col-md-3">
+						<input class="form-control" type="text" placeholder="ماده خوراکی" name="ingradient">
+					</div>
+					<label for="example-text-input4" class="col-md-1 col-form-label">مقدار</label>
+					<div class="col-md-3">
+						<input class="form-control" type="number" step="any" placeholder="0.00" name="amount">
+					</div>
+					<label for="example-text-input5" class="col-md-1 col-form-label">قیمت فیات (افغانی)</label>
+					<div class="col-md-3">
+						<input class="form-control" type="number" step="any" placeholder="0.00" name="price">
+					</div>
+				</div>
+				<div class="form-group row
+					<% if(typeof errors!== undefined){
+						errors.forEach(error=>{
+							if(error.name==='ingradient_9'){%>
+								has-danger
+					<%} }) } %>
+				">
+					<label for="example-text-input4" class="col-md-1 col-form-label">نام جنس</label>
+					<% if(typeof errors!==undefined){ errors.forEach(error=>{
+					if(error.name==='ingradient_9'){%>
+					<div class="form-control-feedback">
+						<%= error.message %>
+					</div>
+					<%} }) } %>
+					<div class="col-md-3">
+						<input class="form-control" type="text" placeholder="ماده خوراکی" name="ingradient">
+					</div>
+					<label for="example-text-input4" class="col-md-1 col-form-label">مقدار</label>
+					<div class="col-md-3">
+						<input class="form-control" type="number" step="any" placeholder="0.00" name="amount">
+					</div>
+					<label for="example-text-input5" class="col-md-1 col-form-label">قیمت فیات (افغانی)</label>
+					<div class="col-md-3">
+						<input class="form-control" type="number" step="any" placeholder="0.00" name="price">
+					</div>
+				</div>
+				<div class="form-group row
+					<% if(typeof errors!== undefined){
+						errors.forEach(error=>{
+							if(error.name==='ingradient_10'){%>
+								has-danger
+					<%} }) } %>
+				">
+					<label for="example-text-input4" class="col-md-1 col-form-label">نام جنس</label>
+					<% if(typeof errors!==undefined){ errors.forEach(error=>{
+					if(error.name==='ingradient_10'){%>
+					<div class="form-control-feedback">
+						<%= error.message %>
+					</div>
+					<%} }) } %>
+					<div class="col-md-3">
+						<input class="form-control" type="text" placeholder="ماده خوراکی" name="ingradient">
+					</div>
+					<label for="example-text-input4" class="col-md-1 col-form-label">مقدار</label>
+					<div class="col-md-3">
+						<input class="form-control" type="number" step="any" placeholder="0.00" name="amount">
+					</div>
+					<label for="example-text-input5" class="col-md-1 col-form-label">قیمت فیات (افغانی)</label>
+					<div class="col-md-3">
+						<input class="form-control" type="number" step="any" placeholder="0.00" name="price">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="example-text-input4" class="col-md-1 col-form-label">توضیحات</label>
+					<div class="col-md-7
+					<% if(typeof errors!== undefined){
+						errors.forEach(error=>{
+							if(error.name==='description'){%>
+								has-danger
+					<%} }) } %>
+					">
+						<textarea id="textarea" class="form-control" maxlength="300" rows="5"
+							placeholder="This textarea has a limit of 225 chars." name="description"></textarea>
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='description'){%>
+						<div class="form-control-feedback">
+							<%= error.message %>
+						</div>
+						<%} }) } %>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="example-number-input" class="col-md-1 col-form-label">ذخیره کردن</label>
+					<div class="col-md-11">
+						<button type="submit" class="btn btn-primary">ذخیره</button>
+					</div>
+				</div>
+			</form>
+			<% } else if(path == "/feed-management/daily-purchase-menu") { %>
+			<form action="/feed-management/daily-purchase" method="POST">
+				<input type="hidden" value="m-7" name="ingradientType">
+				<input type="hidden" value="/feed-management/daily-purchase-menu" name="path">
+				<br>
+				<div class="form-group row">
+					<label for="example-text-input1" class="col-md-1 col-form-label">نمبر مکتوب</label>
+					<div class="col-md-3
+					<% if(typeof errors!== undefined){
+						errors.forEach(error=>{
+							if(error.name==='docNumber'){%>
+								has-danger
+						<%} }) } %>
+					">
+						<input class="form-control" type="text" placeholder="0000000000" name="docNumber">
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+						if(error.name==='docNumber'){%>
+						<div class="form-control-feedback">
+							<%= error.message %>
+						</div>
+						<%} }) } %>
+					</div>
+					<label for="example-text-input4" class="col-md-1 col-form-label">تاریخ</label>
+					<div class="col-md-3
+					<% if(typeof errors!== undefined){
+						errors.forEach(error=>{
+							if(error.name==='date'){%>
+								has-danger
+						<%} }) } %>
+					">
+						<input type="date" class="form-control" name="date">
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='date'){%>
+						<div class="form-control-feedback">
+							<%= error.message %>
+						</div>
+						<%} }) } %>
+					</div>
+					<label for="example-text-input1" class="col-md-1 col-form-label">اخذ شده از</label>
+					<div class="col-md-3
+					<% if(typeof errors!== undefined){
+						errors.forEach(error=>{
+							if(error.name==='from'){%>
+								has-danger
+						<%} }) } %>
+					">
+						<input class="form-control" type="text" placeholder="مارکیت سبزی" name="from">
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='from'){%>
+						<div class="form-control-feedback">
+							<%= error.message %>
+						</div>
+						<%} }) } %>
+					</div>
+				</div>
+
+				<% let i = 1; ingradients.forEach((element) => { %>
+				<div class="form-group row">
+					<input type="hidden" name="id" value="<%= element.id %>">
+					<label for="example-text-input3" class="col-md-1 col-form-label">نام جنس</label>
+					<div class="col-md-3">
+						<input class="form-control" type="text" value="<%= element.ingradient %>" name="ingradient"
+							readonly>
+					</div>
+					<label for="example-text-input4" class="col-md-1 col-form-label">مقدار</label>
+					<div class="col-md-3">
+						<input class="form-control" type="number" step="any"
+							value="<%= element.totalIngradientAmount %>" name="amount" readonly>
+					</div>
+					<label for="example-text-input5" class="col-md-1 col-form-label">قیمت فیات (افغانی)</label>
+					<div class="col-md-3
+					<% if(typeof errors!== undefined){
+						errors.forEach(error=>{
+							if(error.name=== `ingradient_${i}`){%>
+								has-danger
+					<%} }) } %>
+					">
+						<input class="form-control" type="number" step="any" name="price">
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name=== `ingradient_${i}`){%>
+						<div class="form-control-feedback">
+							<%= error.message %>
+						</div>
+						<%} }) } %>
+					</div>
+				</div>
+				<% i++; }) %>
+
+				<div class="form-group row">
+					<label for="example-text-input4" class="col-md-1 col-form-label">توضیحات</label>
+					<div class="col-md-7
+					<% if(typeof errors!== undefined){
+						errors.forEach(error=>{
+							if(error.name==='description'){%>
+								has-danger
+					<%} }) } %>
+					">
+						<textarea id="textarea" class="form-control" maxlength="300" rows="5"
+							placeholder="This textarea has a limit of 225 chars." name="description"></textarea>
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='description'){%>
+						<div class="form-control-feedback">
+							<%= error.message %>
+						</div>
+						<%} }) } %>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="example-number-input" class="col-md-1 col-form-label">ذخیره کردن</label>
+					<div class="col-md-11">
+						<button type="submit" class="btn btn-primary">ذخیره</button>
+					</div>
+				</div>
+			</form>
+			<% } else if (path == "/feed-management/daily-purchase-stock") { %>
+			<form action="/feed-management/daily-purchase-stock" method="POST">
+				<input type="hidden" value="stock" name="ingradientType">
+				<input type="hidden" value="/feed-management/daily-purchase-stock" name="path">
+				<br>
+				<div class="form-group row">
+					<label for="example-text-input1" class="col-md-1 col-form-label">نمبر مکتوب</label>
+					<div class="col-md-3
+					<% if(typeof errors!== undefined){
+						errors.forEach(error=>{
+							if(error.name==='docNumber'){%>
+								has-danger
+						<%} }) } %>
+					">
+						<input class="form-control" type="text" placeholder="0000000000" name="docNumber">
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+						if(error.name==='docNumber'){%>
+						<div class="form-control-feedback">
+							<%= error.message %>
+						</div>
+						<%} }) } %>
+					</div>
+					<label for="example-text-input4" class="col-md-1 col-form-label">تاریخ</label>
+					<div class="col-md-3
+					<% if(typeof errors!== undefined){
+						errors.forEach(error=>{
+							if(error.name==='date'){%>
+								has-danger
+						<%} }) } %>
+					">
+						<input type="date" class="form-control" name="date">
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='date'){%>
+						<div class="form-control-feedback">
+							<%= error.message %>
+						</div>
+						<%} }) } %>
+					</div>
+					<label for="example-text-input1" class="col-md-1 col-form-label">اخذ شده از</label>
+					<div class="col-md-3
+					<% if(typeof errors!== undefined){
+						errors.forEach(error=>{
+							if(error.name==='from'){%>
+								has-danger
+						<%} }) } %>
+					">
+						<input class="form-control" type="text" placeholder="مارکیت سبزی" name="from">
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='from'){%>
+						<div class="form-control-feedback">
+							<%= error.message %>
+						</div>
+						<%} }) } %>
+					</div>
+				</div>
+
+				<% let i = 1; ingradients.forEach((element) => { %>
+				<div class="form-group row">
+					<input type="hidden" name="id" value="<%= element.id %>">
+					<label for="example-text-input3" class="col-md-1 col-form-label">نام جنس</label>
+					<div class="col-md-3">
+						<input class="form-control" type="text" value="<%= element.ingradient %>" name="ingradient"
+							readonly>
+					</div>
+					<label for="example-text-input4" class="col-md-1 col-form-label">مقدار</label>
+					<div class="col-md-3">
+						<input class="form-control" type="number" step="any"
+							value="<%= element.totalIngradientAmount %>" name="amount" readonly>
+					</div>
+					<label for="example-text-input5" class="col-md-1 col-form-label">قیمت فیات (افغانی)</label>
+					<div class="col-md-3
+					<% if(typeof errors!== undefined){
+						errors.forEach(error=>{
+							if(error.name=== `ingradient_${i}`){%>
+								has-danger
+					<%} }) } %>
+					">
+						<input class="form-control" type="number" step="any" name="price">
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name=== `ingradient_${i}`){%>
+						<div class="form-control-feedback">
+							<%= error.message %>
+						</div>
+						<%} }) } %>
+					</div>
+				</div>
+				<% i++; }) %>
+
+				<div class="form-group row">
+					<label for="example-text-input4" class="col-md-1 col-form-label">توضیحات</label>
+					<div class="col-md-7
+					<% if(typeof errors!== undefined){
+						errors.forEach(error=>{
+							if(error.name==='description'){%>
+								has-danger
+					<%} }) } %>
+					">
+						<textarea id="textarea" class="form-control" maxlength="300" rows="5"
+							placeholder="This textarea has a limit of 225 chars." name="description"></textarea>
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='description'){%>
+						<div class="form-control-feedback">
+							<%= error.message %>
+						</div>
+						<%} }) } %>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="example-number-input" class="col-md-1 col-form-label">ذخیره کردن</label>
+					<div class="col-md-11">
+						<button type="submit" class="btn btn-primary">ذخیره</button>
+					</div>
+				</div>
+			</form>
+			<% } %>
+		</div>
+	</div>
+</div>

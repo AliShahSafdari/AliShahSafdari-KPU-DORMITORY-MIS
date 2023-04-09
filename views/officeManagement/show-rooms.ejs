@@ -1,0 +1,111 @@
+<!-- Content -->
+<div class="content-area py-1">
+    <div class="container-fluid">
+        <h4>اضافه کردن محصل جدید</h4>
+        <ol class="breadcrumb no-bg mb-1">
+            <li class="breadcrumb-item"><a href="/">خانه</a></li>
+            <li class="breadcrumb-item"><a href="/office-management">مدیریت اداری</a></li>
+            <li class="breadcrumb-item active">اضافه کردن محصل جدید</li>
+        </ol>
+        <div class="box box-block bg-white">
+            <h5 style="text-align: center;">اضافه کردن محصل جدید</h5>
+            <br>
+
+            <form action="/office-management/show-students-in-rooms" method="POST" enctype="multipart/form-data">
+                <br>
+                <div class="form-group row">
+                    <label for="example-text-input12" class="col-xs-1 col-form-label">نمبر اتاق</label>
+                    <div class="col-xs-5<% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='roomNum'){%>
+                            has-danger
+                    <%} }) } %>">
+                        <select class="form-control mb-1" name="roomNum" required>
+                            <% roomNums.forEach(room=> { %>
+                                <option value="<%= room %>">
+                                    <%= room %>
+                                </option>
+                                <%});%>
+                        </select>
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+                            if(error.name==='roomNum'){%>
+                            <div class="form-control-feedback">
+                                <%= error.message %>
+                            </div>
+                            <%} }) } %>
+                    </div>
+                    <label for="example-text-input12" class="col-xs-1 col-form-label">منزل</label>
+                    <div class="col-xs-5<% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='floorNum'){%>
+                            has-danger
+                    <%} }) } %>">
+                        <select class="form-control mb-1" name="floorNum" required>
+                            <% floorNums.forEach(floors=> { %>
+                                <option value="<%= floors %>">
+                                    <%= floors %>
+                                </option>
+                                <%});%>
+                        </select>
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+                            if(error.name==='floorNum'){%>
+                            <div class="form-control-feedback">
+                                <%= error.message %>
+                            </div>
+                            <%} }) } %>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="example-text-input12" class="col-xs-1 col-form-label">نمبر بلاک</label>
+                    <div class="col-xs-5<% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='blockNum'){%>
+                            has-danger
+                    <%} }) } %>">
+                        <select class="form-control mb-1" name="blockNum" required>
+                            <% blockNums.forEach(blockNums=> { %>
+                                <option value="<%= blockNums %>">
+                                    <%= blockNums %>
+                                </option>
+                                <%});%>
+                        </select>
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+                            if(error.name==='blockNum'){%>
+                            <div class="form-control-feedback">
+                                <%= error.message %>
+                            </div>
+                            <%} }) } %>
+                    </div>
+                    <label for="example-text-input12" class="col-xs-1 col-form-label">سال</label>
+                    <div class="col-xs-5<% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='year'){%>
+                            has-danger
+                    <%} }) } %>">
+                        <select class="form-control mb-1" name="year" required>
+                            <% years.forEach(years=> { %>
+                                <option value="<%= years %>">
+                                    <%= years %>
+                                </option>
+                                <%});%>
+                        </select>
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+                            if(error.name==='year'){%>
+                            <div class="form-control-feedback">
+                                <%= error.message %>
+                            </div>
+                            <%} }) } %>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="example-number-input" class="col-xs-1 col-form-label">نمایش محصل
+                    </label>
+                    <div class="col-xs-11">
+                        <button type="submit" class="btn btn-primary">نمایش</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

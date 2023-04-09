@@ -1,0 +1,301 @@
+<!-- Content -->
+<%- include('../includes/tostSuccess') %>
+<div class="content-area py-1">
+	<div class="container-fluid">
+		<h4>اضافه کردن محصل جدید</h4>
+		<ol class="breadcrumb no-bg mb-1">
+			<li class="breadcrumb-item"><a href="/">خانه</a></li>
+			<li class="breadcrumb-item"><a href="/office-management">مدیریت اداری</a></li>
+			<li class="breadcrumb-item active">اضافه کردن محصل جدید</li>
+		</ol>
+		<div class="box box-block bg-white">
+			<h5 style="text-align: center;">اضافه کردن محصل جدید</h5>
+			<br>
+
+
+			<form action="/office-management/add-new-student" method="POST" enctype="multipart/form-data">
+				<br>
+				<div class="form-group row">
+					<label for="example-text-input1" class="col-xs-1 col-form-label">آیدی</label>
+					<div class="col-xs-5<% if(typeof errors!== undefined){
+						errors.forEach(error=>{
+							if(error.name==='studentId'){%>
+								has-danger
+						<%} }) } %>">
+						
+						<input class="form-control" type="text" name="studentId" placeholder="آیدی محصل"
+							id="example-text-input1" required autofocus>
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='studentId'){%>
+							<div class="form-control-feedback">
+								<%= error.message %>
+							</div>
+							<%} }) } %>
+					</div>
+					<label for="example-text-input1" class="col-xs-1 col-form-label">نام</label>
+					<div class="col-xs-5<% if(typeof errors!== undefined){
+						errors.forEach(error=>{
+							if(error.name==='name'){%>
+								has-danger
+						<%} }) } %>">
+						<input class="form-control" type="text" name="name" placeholder="نام و نام خانوادگی"
+							id="example-text-input1" required>
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='name'){%>
+							<div class="form-control-feedback">
+								<%= error.message %>
+							</div>
+							<%} }) } %>
+					</div>
+
+				</div>
+
+				<div class="form-group row">
+					<label for="example-text-input12" class="col-xs-1 col-form-label">نام
+						پدر</label>
+					<div class="col-xs-5<% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='fName'){%>
+                            has-danger
+                    <%} }) } %>">
+						<input class="form-control" type="text" name="fName" placeholder="نام پدر"
+							id="example-text-input2" required>
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='fName'){%>
+							<div class="form-control-feedback">
+								<%= error.message %>
+							</div>
+							<%} }) } %>
+					</div>
+					<label for="example-text-input3" class="col-xs-1 col-form-label">نام پدر
+						کلان</label>
+					<div class="col-xs-5<% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='gFName'){%>
+                            has-danger
+                    <%} }) } %>">
+						<input class="form-control" type="text" name="gFName" placeholder="نام پدر کلان"
+							id="example-text-input3" required>
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='gFName'){%>
+							<div class="form-control-feedback">
+								<%= error.message %>
+							</div>
+							<%} }) } %>
+					</div>
+
+				</div>
+
+				<div class="form-group row">
+					<label for="example-text-input4" class="col-xs-1 col-form-label">صنف</label>
+					<div class="col-xs-5<% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='classroom'){%>
+                            has-danger
+                    <%} }) } %>">
+						<input class="form-control" type="text" name="classroom" placeholder="صنف"
+							id="example-text-input4" required>
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='classroom'){%>
+							<div class="form-control-feedback">
+								<%= error.message %>
+							</div>
+							<%} }) } %>
+					</div>
+					<label for="example-text-input12" class="col-xs-1 col-form-label"> پوهنحی</label>
+					<div class="col-xs-5<% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='faculty'){%>
+                            has-danger
+                    <%} }) } %>">
+						<select class="form-control mb-1" name="faculty" required>
+							<option value="کمپیوتر ساینس">کمپیوتر ساینس</option>
+							<option value="ساختمانی">ساختمانی</option>
+							<option value="ساختمان هایی تراسپورتی">ساختمان هایی تراسپورتی</option>
+							<option value="الکترو میخانیک">الکترو میخانیک</option>
+							<option value="انجنیری جیوماتیک و کدستر">انجنیری جیوماتیک و کدستر</option>
+							<option value="انجنیری منابع آب و محیط زیست">انجنیری منابع آب و محیط زیست</option>
+							<option value="جیولوژی و معادن">جیولوژی و معادن</option>
+							<option value="تکنالوژی کیمیاوی">تکنالوژی کیمیاوی</option>
+						</select>
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='faculty'){%>
+							<div class="form-control-feedback">
+								<%= error.message %>
+							</div>
+							<%} }) } %>
+					</div>
+					
+
+				</div>
+
+				<div class="form-group row">
+					<label for="example-text-input6" class="col-xs-1 col-form-label">دیپارتمنت</label>
+					<div class="col-xs-5<% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='department'){%>
+                            has-danger
+                    <%} }) } %>">
+						<input class="form-control" type="text" name="department" placeholder="دیپارتمنت"
+							id="example-text-input6" required>
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='department'){%>
+							<div class="form-control-feedback">
+								<%= error.message %>
+							</div>
+							<%} }) } %>
+					</div>
+					<label for="example-text-input7" class="col-xs-1 col-form-label">ولایت</label>
+					<div class="col-xs-5 <% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='province'){%>
+                            has-danger
+                    <%} }) } %>">
+						<input class="form-control" type="text" name="province" placeholder="ولایت"
+							id="example-text-input7" required>
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='province'){%>
+							<div class="form-control-feedback">
+								<%= error.message %>
+							</div>
+							<%} }) } %>
+					</div>
+
+				</div>
+
+				<div class="form-group row">
+					<label for="example-text-input8" class="col-xs-1 col-form-label">ولسوالی</label>
+					<div class="col-xs-5<% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='destrict'){%>
+                            has-danger
+                    <%} }) } %>">
+						<input class="form-control" type="text" name="destrict" placeholder="ولسوالی"
+							id="example-text-input8" required>
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='destrict'){%>
+							<div class="form-control-feedback">
+								<%= error.message %>
+							</div>
+							<%} }) } %>
+					</div>
+					<label for="example-text-input9" class="col-xs-1 col-form-label">نمبر
+						تذکره</label>
+					<div class="col-xs-5<% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='tazkiraNum'){%>
+                            has-danger
+                    <%} }) } %>">
+						<input class="form-control" type="text" name="tazkiraNum" placeholder="نمبر تذکره"
+							id="example-text-input9" required>
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='tazkiraNum'){%>
+							<div class="form-control-feedback">
+								<%= error.message %>
+							</div>
+							<%} }) } %>
+					</div>
+
+				</div>
+
+				<div class="form-group row ">
+					<label for="example-text-input10" class="col-xs-1 col-form-label ">نمبر
+						تلفون</label>
+					<div class="col-xs-5 <% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='phonNum'){%>
+                            has-danger
+                    <% } }) } %>">
+						<input class="form-control" type="text" name="phonNum" placeholder="شماره تماس"
+							id="example-text-input10" required>
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='phonNum'){%>
+							<div class="form-control-feedback">
+								<%= error.message %>
+							</div>
+							<%} }) } %>
+					</div>
+					<label for="example-text-input12" class="col-xs-1 col-form-label"> کوایف</label>
+					<div class="col-xs-5<% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='kawayef'){%>
+                            has-danger
+                    <%} }) } %>">
+						<select class="form-control mb-1" name="kawayef" required>
+							<option value="exist">برحال</option>
+							<option value="hanging">تعجیل</option>
+							<option value="graduated">فارغ</option>
+							<option value="suspension">ناکام</option>
+							<option value="uderPercent">زیر فیصدی</option>
+							<option value="repeatSemester">تکرار سمستر</option>
+						</select>
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='kawayef'){%>
+							<div class="form-control-feedback">
+								<%= error.message %>
+							</div>
+							<%} }) } %>
+					</div>
+
+				</div>
+
+				<div class="form-group row ">
+					<label for="example-text-input12" class="col-xs-1 col-form-label ">اپلود
+						تصویر</label>
+					<div class="col-xs-5 <% if(typeof errors!==undefined){ 
+                    	errors.forEach(error=>{
+                        	if(error.name=== 'photo.name' || 'photo.size' || 'photo.mimetype'){%>
+                            	has-danger
+                    		<%} }) } %>">
+						<label class="custom-file">
+							<input type="file" id="file" name="photo" class="custom-file-input form-control" required>
+							<span class="custom-file-control "></span>
+							<% if(typeof errors!==undefined){ errors.forEach(error=>{
+								if(error.name=== 'photo.name' || 'photo.size' || 'photo.mimetype'){%>
+								<div class="form-control-feedback">
+									<%= error.message %>
+								</div>
+								<%} }) } %>
+						</label>
+					</div>
+
+					<label for="example-text-input12" class="col-xs-1 col-form-label"> نام کتاب</label>
+					<div class="col-xs-5<% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='bookName'){%>
+                            has-danger
+                    <%} }) } %>">
+						<select class="form-control mb-1" name="bookName" required>
+							<% books.forEach(book=> { %>
+								<option value="<%= book._id %>">
+									کتاب <%= book.bookName %> بلاک <%= book.blockNum %> منزل <%= book.floorNum %> جلد <%= book.year %>
+								</option>
+								<%});%>
+						</select>
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='bookName'){%>
+							<div class="form-control-feedback">
+								<%= error.message %>
+							</div>
+							<%} }) } %>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="example-text-input12" class="col-xs-1 col-form-label">تاریخ</label>
+					<div class="col-xs-5">
+						<input type="date" name="date" class="form-control" required>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="example-number-input" class="col-xs-1 col-form-label">ذخیره
+						کردن</label>
+					<div class="col-xs-11">
+						<button type="submit" class="btn btn-primary">ذخیره</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

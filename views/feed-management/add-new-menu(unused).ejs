@@ -1,0 +1,141 @@
+<!-- Content -->
+<div class="content-area py-1">
+    <div class="container-fluid">
+
+
+
+        <div class="box box-block bg-white">
+            <h4 style="text-align: center;">ترتیب اعاشه صبح، چاشت و شب</h4>
+            <br>
+            <form action="/feed-management/add-new-menu" method="POST" class="third" id="mainform" name="mainform">
+                <div class="form-group row">
+                    <label for="example-text-input1" class="col-xs-1 col-form-label">نام تابلو</label>
+                </div>
+                <div class="form-group row
+				<% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='menuType'){%>
+                            has-danger
+                    <%} }) } %>
+				">
+                    <div class="col-xs-2">
+                        <input class="form-control" type="text" value="" id="example-text-input1" name="menuType"
+                            placeholder="(الف)" autocomplete="off">
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='menuType'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+                    <div class="col-xs-4"></div>
+                </div>
+
+
+
+                <div class="two">
+                    <input type="button" class="name" onclick="textBoxCreate()" value=" دیپو">
+                    <input type="button" class="email" onclick="emailBoxCreate()" value="تازه">
+                </div>
+
+
+
+                <br>
+                <h5>دیپو</h5>
+                <div class="form-group row">
+                    <label class="col-xs-2 col-form-label">نام جنس</label>
+                    <label class="col-xs-2 col-form-label">استحقاق یک نفر صبح (گرام)</label>
+                    <label class="col-xs-2 col-form-label">استحقاق یک نفر چاشت (گرام)</label>
+                    <label class="col-xs-2 col-form-label">استحقاق یک نفر شب (گرام)</label>
+                    <label class="col-xs-2 col-form-label">کالوری</label>
+                </div>
+
+                <p id="myForm"></p>
+
+                <br>
+                <h5>تازه</h5>
+                <div class="form-group row">
+                    <label class="col-xs-2 col-form-label">نام جنس</label>
+                    <label class="col-xs-2 col-form-label">(گرام) استحقاق یک نفر صبح</label>
+                    <label class="col-xs-2 col-form-label">(گرام) استحقاق یک نفر چاشت</label>
+                    <label class="col-xs-2 col-form-label">(گرام) استحقاق یک نفر شب</label>
+                    <label class="col-xs-2 col-form-label">کالوری</label>
+                </div>
+
+
+                <p id="myForm2"></p>
+
+
+                <div class="form-group row">
+                    <label for="example-number-input" class="col-xs-1 col-form-label">ثبت</label>
+                    <div class="col-xs-11">
+                        <input type="submit" class="btn btn-primary" value="ذخیره">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    // window.app = JSON.stringify(ingradients)
+    // FormGet Online Form Builder JS Code
+    // Creating and Adding Dynamic Form Elements.
+    var i = 1; // Global Variable for Name
+    var j = 1; // Global Variable for E-mail
+    /*
+    =================
+    Creating Text Box for name field in the Form.
+    =================
+    */
+
+
+
+    function textBoxCreate() {
+
+        let sel = document.createElement("select");
+
+        // for (let element of ingradients) {
+
+        let opt = document.createElement("option");
+
+        opt.value = 1;
+        opt.text = 2;
+
+        // alert(ingradients)
+
+        sel.add(opt, null)
+
+        // }
+
+        // var y = document.createElement("SELECT");
+        // y.setAttribute("name", "ingradient_stock");
+        // y.setAttribute("class", "form-control");
+        // var x = document.createElement("OPTION");
+        // x.setAttribute("value", "ali");
+        // y.setAttribute("id", "Name_" + i);
+        // y.setAttribute("Name", "Name_" + i);
+        document.getElementById("myForm").appendChild(sel);
+
+        // let option = new Option('کچالو', 'ک');
+        // const select = document.getElementById("Name_" + i).add('option', 'y')
+
+        i++;
+    }
+    /*
+    =================
+    Creating Text Box for email field in the Form.
+    =================
+    */
+    function emailBoxCreate() {
+        var y = document.createElement("INPUT");
+        var t = document.createTextNode("Email");
+        y.appendChild(t);
+        y.setAttribute("Placeholder", "Email_" + j);
+        y.setAttribute("Name", "Email_" + j);
+        document.getElementById("myForm2").appendChild(y);
+        j++;
+    }
+
+</script>

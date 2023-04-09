@@ -1,0 +1,73 @@
+<!-- table -->
+<!-- Content -->
+<div class="content-area py-1">
+    <div class="container-fluid">
+        <% if(StudentKit.length>0){ %>
+        <div class="box box-block bg-white">
+            <table class="table table-striped table-bordered dataTable" id="table-3">
+                <thead>
+                    <tr>
+                        <th>نمبر</th>
+                        <th>اسم</th>
+                        <th>ولد</th>
+                        <th>ولدیت</th>
+                        <th>پوهنحی</th>
+                        <th>صنف</th>
+                        <th>ولایت</th>
+                        <th>ولسوالی</th>
+                        <th>نوعیت</th>
+                        <th>سال توضیح</th>
+                        <th>نمایش</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% let i = 1 ;%>
+                    <% for(let stk of StudentKit){ %>
+                    <% let flag = true%>
+                    <tr>
+                        <td>
+                            <%= i++ %>
+                        </td>
+                        <td><%=stk.students_fk.name%></td>
+                        <td><%=stk.students_fk.fName%></td>
+                        <td><%=stk.students_fk.gFName%></td>
+                        <td><%=stk.students_fk.faculty%></td>
+                        <td><%=stk.students_fk.classroom%></td>
+                        <td><%=stk.students_fk.province%></td>
+                        <td><%=stk.students_fk.destrict%></td>
+                        <% if(parseInt( stk.mattress)>0){flag =false} %>
+                        <% if(parseInt( stk.pillow)>0){flag =false} %>
+                        <% if(parseInt( stk.coverlet )>0){flag =false} %>
+                        <% if(parseInt( stk.quilt )>0){flag =false} %>
+                        <% if(parseInt( stk.bed )>0){flag =false} %>
+                        <% if(parseInt( stk.mirror )>0){flag =false} %>
+                        <% if(parseInt( stk.windowShade )>0){flag =false} %>
+                        <% if(parseInt( stk.carpet )>0){flag =false} %>
+                        <% if(parseInt( stk.table)>0){flag =false} %>
+                        <% if(parseInt(stk.chair)>0){flag =false} %>
+                        <%if(flag){%>
+                        <td>رسید</td>
+                        <% }else{%>
+                        <td>باقی</td>
+                        <%}%> 
+                        <td><%=stk.Dates%></td>
+                        <td>
+                            <a href="/goods-management/show-oneStudentKit/<%=stk._id %>" id="show_student">
+                                <span class="fa fa-eye"></span>
+                            </a>
+
+                        </td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+
+        <% }else{ %>
+        <div class="m-2">
+            <h2 class="center">در حال حاظر هیچ البسه محصل توسط شما در دیتابس ثبت نشده است</h2>
+        </div>
+        <% } %>
+    </div>
+</div>
+</div>

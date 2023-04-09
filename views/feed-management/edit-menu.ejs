@@ -1,0 +1,159 @@
+<div class="content-area py-1">
+	<div class="container-fluid">
+		<h4>ویرایش ماده غذایی</h4>
+		<ol class="breadcrumb no-bg mb-1">
+			<li class="breadcrumb-item"><a href="/feed-management/show-daily-menus">مدیریت ارتزاقی</a></li>
+			<li class="breadcrumb-item"><a href="/feed-management/menu/<%= menuType %>">تابلوی حواله ی اعاشه</a></li>
+			<li class="breadcrumb-item active">ویرایش ماده غذایی</li>
+		</ol>
+		<div class="box box-block bg-white">
+			<h5 style="text-align: center;">ویرایش ماده غذایی تابلوی (<%= menuType %>)</h5>
+			<br>
+
+
+			<form action="/feed-management/menu/update-ingradient" method="POST">
+				<input type="hidden" name="menuType" value="<%= ingradient.menuType %>">
+				<input type="hidden" name="ingradientId" value="<%= ingradient.id %>">
+				<br>
+				<div class="row">
+					<div class="col-xs-3"></div>
+					<div class="col-xs-5">
+						<div class="form-group row
+							<% if(typeof errors!== undefined){
+							errors.forEach(error=>{
+								if(error.name==='ingradient'){%>
+									has-danger
+							<%} }) } %>
+						">
+							<label for="example-text-input1" class="col-xs-3 col-form-label">جنس خوراکی</label>
+							<div class="col-xs-9">
+								<input class="form-control" type="text" name="ingradient"
+									value="<%= ingradient.ingradient %>" <% if(ingradient.stock_fk) { %> readonly
+									<% } %>>
+							</div>
+							<% if(typeof errors!==undefined){ errors.forEach(error=>{
+								if(error.name==='ingradient'){%>
+							<div class="form-control-feedback" style="color: red;">
+								<%= error.message %>
+							</div>
+							<%} }) } %>
+						</div>
+					</div>
+					<div class="col-xs-4"></div>
+				</div>
+				<div class="row">
+					<div class="col-xs-3"></div>
+					<div class="col-xs-5">
+						<div class="form-group row
+							<% if(typeof errors!== undefined){
+								errors.forEach(error=>{
+									if(error.name==='morningIngradientAmount'){%>
+										has-danger
+								<%} }) } %>
+							">
+							<label for="example-text-input" class="col-xs-3 col-form-label">استحقاق یک نفر در
+								صبح (گرام)</label>
+							<div class="col-xs-9">
+								<input class="form-control" type="number" step="any" min="0"
+									value="<%= ingradient.morningIngradientAmount %>" name="morningIngradientAmount">
+							</div>
+							<% if(typeof errors!==undefined){ errors.forEach(error=>{
+								if(error.name==='morningIngradientAmount'){%>
+							<div class="form-control-feedback" style="color: red;">
+								<%= error.message %>
+							</div>
+							<%} }) } %>
+						</div>
+					</div>
+					<div class="col-xs-4"></div>
+				</div>
+				<div class="row">
+					<div class="col-xs-3"></div>
+					<div class="col-xs-5">
+						<div class="form-group row
+							<% if(typeof errors!== undefined){
+								errors.forEach(error=>{
+									if(error.name==='noonIngradientAmount'){%>
+										has-danger
+								<%} }) } %>
+							">
+							<label for="example-text-input3" class="col-xs-3 col-form-label">استحقاق یک نفر در
+								چاشت (گرام)</label>
+							<div class="col-xs-9">
+								<input class="form-control" type="number" step="any" min="0"
+									value="<%= ingradient.noonIngradientAmount %>" name="noonIngradientAmount">
+							</div>
+							<% if(typeof errors!==undefined){ errors.forEach(error=>{
+												if(error.name==='noonIngradientAmount'){%>
+							<div class="form-control-feedback" style="color: red;">
+								<%= error.message %>
+							</div>
+							<%} }) } %>
+						</div>
+					</div>
+					<div class="col-xs-4"></div>
+				</div>
+				<div class="row">
+					<div class="col-xs-3"></div>
+					<div class="col-xs-5">
+						<div class="form-group row
+							<% if(typeof errors!== undefined){
+								errors.forEach(error=>{
+									if(error.name==='nightIngradientAmount'){%>
+										has-danger
+								<%} }) } %>
+							">
+							<label for="example-text-input4" class="col-xs-3 col-form-label">استحقاق یک نفر در
+								شب (گرام)</label>
+							<div class="col-xs-9">
+								<input class="form-control" type="number" step="any" min="0"
+									value="<%= ingradient.nightIngradientAmount %>" name="nightIngradientAmount">
+							</div>
+							<% if(typeof errors!==undefined){ errors.forEach(error=>{
+								if(error.name==='nightIngradientAmount'){%>
+							<div class="form-control-feedback" style="color: red;">
+								<%= error.message %>
+							</div>
+							<%} }) } %>
+						</div>
+					</div>
+					<div class="col-xs-4"></div>
+				</div>
+				<div class="row">
+					<div class="col-xs-3"></div>
+					<div class="col-xs-5">
+						<div class="form-group row
+							<% if(typeof errors!== undefined){
+								errors.forEach(error=>{
+									if(error.name==='calory'){%>
+										has-danger
+								<%} }) } %>
+							">
+							<label for="example-text-input4" class="col-xs-3 col-form-label">کالوری</label>
+							<div class="col-xs-9">
+								<input class="form-control" type="number" step="any" min="0"
+									value="<%= ingradient.calory %>" name="calory">
+							</div>
+							<% if(typeof errors!==undefined){ errors.forEach(error=>{
+								if(error.name==='calory'){%>
+							<div class="form-control-feedback" style="color: red;">
+								<%= error.message %>
+							</div>
+							<%} }) } %>
+						</div>
+					</div>
+					<div class="col-xs-4"></div>
+				</div>
+				<hr>
+				<div class="form-group row">
+					<div class="col-xs-3"></div>
+					<label for="example-number-input" class="col-xs-1 col-form-label">ذخیره کردن</label>
+					<div class="col-xs-5">
+						<button type="submit" class="btn btn-primary">ذخیره</button>
+					</div>
+				</div>
+			</form>
+		</div>
+
+	</div>
+</div>

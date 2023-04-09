@@ -1,0 +1,71 @@
+<!-- table -->
+<!-- Content -->
+<div class="content-area py-1">
+    <div class="container-fluid">
+        <% if(staffkits.length>0){ %>
+        <div class="box box-block bg-white">
+            <table class="table table-striped table-bordered dataTable" id="table-2">
+                <thead>
+                    <tr>
+                        <th>شماره</th>
+                        <th>اسم</th>
+                        <th>ولد</th>
+                        <th>وظیفه</th>
+                        <th>نمبرتذکره</th>
+                        <th> آدی کارت</th>
+                        <th>ولایت</th>
+                        <th>نام جنس</th>
+                        <th>تعداد جنس</th>
+                        <th>قیمت مجموعی</th>
+                        <th>ملاحضات</th>
+                        <th>سال توضیح جنس</th>
+                        <% if (user.position === "مدیر جنسی") { %>
+                        <th>نمایش</th>
+                        <%}%>
+                    </tr>
+                </thead>
+                <tbody>
+                        <% let i=1;%>
+                        <% for(let stk of staffkits){ %>
+                        <% let flag = true%>
+                    <tr>
+
+                        <td>
+                            <%=i++%>
+                        </td>
+                        <td>
+                            <%=stk.staff_fk.name%>
+                        </td>
+                        <td> <%=stk.staff_fk.fName%> </td>
+                        <td> <%=stk.staff_fk.Job%> </td>
+                        <td> <%=stk.staff_fk.tazkiraNum%> </td>
+                        <td> <%=stk.staff_fk.idCard%> </td>
+                        <td> <%=stk.staff_fk.province%> </td>
+                        <td> <%=stk.goods_fk.name%> </td>
+                        <td> <%=stk.goodAmount%> </td>
+                        <td> <%=parseInt(stk.goodAmount)*parseInt(stk.goods_fk.price)%></td>
+                        <% if(parseInt( stk.goodAmount)>0){flag =false} %>
+                        <%if(flag){%>
+                        <td>رسید</td>
+                        <% }else{%>
+                        <td>باقی</td>
+                        <%}%> 
+                        <td><%=stk.Dates%></td>
+                        <% if (user.position === "مدیر جنسی") { %>
+                        <td>
+                            <a href="/goods-management/show-oneStaffKit/<%=stk._id %>" id="show_staff">
+                                <span class="fa fa-eye"></span>
+                            </a></td>
+                        <%}%>
+                    </tr>
+                    <% } %>
+                        </tbody>
+            </table>
+        </div>
+        <% }else{ %>
+        <div class="m-2">
+            <h2 class="center">در حال حاظر هیچ کارمند که جنس گرفته باشد توسط شما در دیتابس ثبت نشده است</h2>
+        </div>
+        <% } %>
+    </div>
+</div>

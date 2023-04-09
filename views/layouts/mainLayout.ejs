@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+
+<head>
+  <!-- Meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Title -->
+  <title>
+    <%= pageTittle %>
+  </title>
+
+
+  <!-- third layout -->
+  <% if(typeof thirdLayout!==undefined){ %>
+  <!-- Vendor CSS -->
+  <script type="text/javascript" src="../../../../dist/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../../../vendor/bootstrap4-rtl/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../../../vendor/themify-icons/themify-icons.css">
+  <link rel="stylesheet" href="../../../../vendor/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../../../../vendor/jscrollpane/jquery.jscrollpane.css">
+  <link rel="stylesheet" href="../../../../vendor/toastr/toastr.min.css">
+  <!-- date picker -->
+  <link rel="stylesheet" href="../../../../dist/css/bootstrap-datetimepicker.min.css">
+  <!-- end of date picker -->
+
+
+  <% if(typeof table!==undefined){ %>
+  <script type="text/javascript" src="../../../../dist/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../../../vendor/DataTables/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="../../../../vendor/DataTables/Buttons/css/buttons.dataTables.min.css">
+  <link rel="stylesheet" href="../../../../vendor/DataTables/Buttons/css/buttons.bootstrap4.min.css">
+  <% } %>
+
+  <!-- jquery -->
+  <script type="text/javascript" src="../../../../vendor/toastr/toastr.min.js"></script>
+
+
+  <!-- Neptune CSS -->
+  <link rel="stylesheet" href="../../../../css/core.css">
+  <% } else if(typeof secondLayout!==undefined){ %>
+  <!-- Vendor CSS -->
+  <link rel="stylesheet" href="../../vendor/bootstrap4-rtl/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../vendor/themify-icons/themify-icons.css">
+  <link rel="stylesheet" href="../../vendor/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../../vendor/jscrollpane/jquery.jscrollpane.css">
+  <link rel="stylesheet" href="../../vendor/toastr/toastr.min.css">
+  <!-- date picker -->
+  <link rel="stylesheet" href="../../dist/css/bootstrap-datetimepicker.min.css">
+  <!-- end of date picker -->
+
+
+
+  <% if(typeof table!==undefined){ %>
+  <link rel="stylesheet" href="../../vendor/DataTables/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="../../vendor/DataTables/Buttons/css/buttons.dataTables.min.css">
+  <link rel="stylesheet" href="../../vendor/DataTables/Buttons/css/buttons.bootstrap4.min.css">
+  <% } %>
+
+  <!-- jquery -->
+  <script type="text/javascript" src="../../vendor/toastr/toastr.min.js"></script>
+
+
+  <!-- Neptune CSS -->
+  <link rel="stylesheet" href="../../css/core.css">
+
+  <% } else if(typeof secondLayout===undefined){ %>
+  <!-- Vendor CSS -->
+  <script type="text/javascript" src="../dist/jquery.min.js"></script>
+  <link rel="stylesheet" href="../vendor/bootstrap4-rtl/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../vendor/themify-icons/themify-icons.css">
+  <link rel="stylesheet" href="../vendor/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../vendor/jscrollpane/jquery.jscrollpane.css">
+  <link rel="stylesheet" href="../vendor/toastr/toastr.min.css">
+  <!-- date picker -->
+  <link rel="stylesheet" href="../dist/css/bootstrap-datetimepicker.min.css">
+  <!-- end of date picker -->
+
+
+  <% if(typeof table!==undefined){ %>
+  <link rel="stylesheet" href="../vendor/DataTables/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="../vendor/DataTables/Buttons/css/buttons.dataTables.min.css">
+  <link rel="stylesheet" href="../vendor/DataTables/Buttons/css/buttons.bootstrap4.min.css">
+  <% } %>
+
+  <!-- jquery -->
+  <script type="text/javascript" src="../vendor/toastr/toastr.min.js"></script>
+
+
+  <!-- Neptune CSS -->
+  <link rel="stylesheet" href="../css/core.css">
+  <% } %>
+  <!-- secondLayout -->
+
+</head>
+
+<body class="fixed-sidebar fixed-header skin-5">
+  <div class="wrapper">
+
+
+    <% if(typeof message.success_msg !== 'undefined' ){ %>
+    <script>
+      $(document).ready(function () {
+        toastr.options = {
+          "positionClass": "toast-top-center",
+        }
+        toastr.success("<%= message.success_msg %>", { timeOut: 6000 });
+      });
+    </script>
+    <% } else if(typeof message.error_msg !== 'undefined' ){ %>
+    <script>
+      $(document).ready(function () {
+        toastr.options = {
+          "positionClass": "toast-top-center",
+        }
+        toastr.error("<%= message.error_msg %>", { timeOut: 6000 });
+      });
+    </script>
+    <% } %>
+    <!-- end of toast message -->
+
+
+    <!-- Sidebar -->
+    <div class="site-overlay"></div>
+    <div class="site-sidebar">
+      <div class="custom-scroll custom-scroll-light">
+        <ul class="sidebar-menu">
+          <!-- feed management -->
+          <% if(user.position==="مدیر ارتزاقی" || user.position==="آمر لیلیه" ){ %>
+          <li class="menu-title">مدیریت ارتزاقی</li>
+          <li>
+            <a href="/feed-management/show-daily-menus" class="waves-effect  waves-light">
+              <span class="s-icon"><i class="fa fa-shopping-basket"></i></span>
+              <span class="s-text">حواله اعاشه روز بعد</span>
+              <br>
+            </a>
+          </li>
+          <li>
+            <a href="/feed-management/stock" class="waves-effect  waves-light">
+              <span class="s-icon"><i class="ti-exchange-vertical"></i></span>
+              <span class="s-text">دیپو</span>
+              <br>
+            </a>
+          </li>
+          <li class="with-sub">
+            <a href="#" class="waves-effect  waves-light">
+              <span class="s-caret"><i class="fa fa-angle-down"></i></span>
+              <span class="s-icon"><i class="ti-pie-chart"></i></span>
+              <span class="s-text">گزارشات</span>
+              <br>
+            </a>
+            <ul>
+              <li><a href="/feed-management/show-stock-purchase">ادخالات دیپو</a></li>
+              <li><a href="/feed-management/show-stock-export">اخراجات دیپو</a></li>
+              <li><a href="/feed-management/show-daily-purchase">خرید روزانه (م-7)</a></li>
+            </ul>
+          </li>
+          <li class="with-sub">
+            <a href="#" class="waves-effect  waves-light">
+              <span class="s-caret"><i class="fa fa-angle-down"></i></span>
+              <span class="s-icon"><i class="ti-menu-alt"></i></span>
+              <span class="s-text">تابلوی های اعاشه</span>
+              <br>
+            </a>
+            <ul>
+
+              <% if (user.position === "مدیر ارتزاقی") { %>
+              <li><a href="/feed-management/add-new-menu">اضافه کردن تابلو</a></li>
+              <% } %>
+              <% if(typeof foodMenu !== 'undefined') {
+                  foodMenu.forEach(element => { %>
+              <li><a href="/feed-management/menu/<%= element %>">تابلوی اعاشه (<%= element %>)</a></li>
+              <% })} %>
+            </ul>
+          </li>
+          <% if (user.position === "مدیر ارتزاقی") { %>
+          <li>
+            <a href="/feed-management/edit-account/<%= user._id %>" class="waves-effect  waves-light">
+              <span class="s-icon"><i class="ti-settings"></i></span>
+              <span class="s-text">حساب کاربری</span>
+              <br>
+            </a>
+          </li>
+          <% } } %>
+
+          <!-- goods management -->
+          <% if(user.position==="مدیر جنسی" || user.position==="آمر لیلیه" ){ %>
+          <li class="menu-title">مدیریت جنسی</li>
+          <% if(user.position!=="آمر لیلیه" ){ %>
+
+          <li class="with-sub">
+            <a href="#" class="waves-effect  waves-light">
+              <span class="s-caret"><i class="fa fa-angle-down"></i></span>
+              <span class="s-icon"><i class="ti-write"></i></span>
+              <span class="s-text">بخش ثبت جنس</span>
+              <br>
+            </a>
+            <ul>
+              <li><a href="/goods-management/add-goods">ثبت اجناس جدید</a></li>
+              <li><a href="/goods-management/add-entries">ثبت ادخالات دیپو</a></li>
+              <li><a href="/goods-management/add-exits">ثبت اخراجات</a></li>
+            </ul>
+          </li>
+
+          <%}%>
+          <li class="with-sub">
+            <a href="#" class="waves-effect  waves-light">
+              <span class="s-caret"><i class="fa fa-angle-down"></i></span>
+              <span class="s-icon"><i class="fa fa-inbox"></i></span>
+              <span class="s-text">بخش نمایش اجناس</span>
+              <br>
+            </a>
+            <ul>
+              <li><a href="/goods-management/show-goods">نمایش اجناس</a></li>
+              <li><a href="/goods-management/show-entries">نمایش ادخالات دیپو</a></li>
+              <li><a href="/goods-management/show-exits">نمایش اخراجات دیپو</a></li>
+            </ul>
+          </li>
+          <% if(user.position!=="آمر لیلیه" ){ %>
+          <li class="with-sub">
+            <a href="#" class="waves-effect  waves-light">
+              <span class="s-caret"><i class="fa fa-angle-down"></i></span>
+              <span class="s-icon"><i class="ti-write"></i></span>
+              <span class="s-text">ثبت حواله جات</span>
+              <br>
+            </a>
+            <ul>
+              <li><a href="/goods-management/add-entryDocument">ثبت حواله واده</a></li>
+              <li><a href="/goods-management/add-exportDocument">ثبت حواله صادره</a></li>
+            </ul>
+          </li>
+          <%}%>
+          <li class="with-sub">
+            <a href="#" class="waves-effect  waves-light">
+              <span class="s-caret"><i class="fa fa-angle-down"></i></span>
+              <span class="s-icon"><i class="ti-receipt"></i></span>
+              <span class="s-text">نمایش حواله جات</span>
+              <br>
+            </a>
+            <ul>
+              <li><a href="/goods-management/show-entryDocument">نمایش حواله واده</a></li>
+              <li><a href="/goods-management/show-exportDocument">نمایش حواله صادره </a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/goods-management/show-bookRegister" class="waves-effect  waves-light">
+              <span class="s-icon"><i class="ti-bookmark-alt"></i></span>
+              <span class="s-text">نمایش کتاب</span>
+              <br>
+            </a>
+          </li>
+
+          <li class="with-sub">
+            <a href="#" class="waves-effect  waves-light">
+              <span class="s-caret"><i class="fa fa-angle-down"></i></span>
+              <span class="s-icon"><i class="ti-user"></i></span>
+              <% if(user.position!=="آمر لیلیه" ){ %>
+          <span class="s-text"> ثبت و نمایش کارمند</span>
+          <%}%>
+               <% if(user.position==="آمر لیلیه" ){ %>
+          <span class="s-text"> نمایش کارمند</span>
+          <%}%>
+          <br>
+            </a>
+            <ul>
+              <li><a href="/goods-management/add-staff">ثبت کارمند</a></li>
+              <% if(user.position!=="آمر لیلیه" ){ %>
+          <li><a href="/goods-management/show-staffs">نمایش کارمند</a></li>
+          <%}%>
+            </ul>
+          </li>
+          <li class="with-sub">
+            <a href="#" class="waves-effect  waves-light">
+              <span class="s-caret"><i class="fa fa-angle-down"></i></span>
+              <span class="s-icon"><i class="ti-package"></i></span>
+              <% if(user.position!=="آمر لیلیه" ){ %>
+          <span class="s-text"> ثبت و نمایش البسه محصل</span>
+          <%}%>
+              <% if(user.position==="آمر لیلیه" ){ %>
+          <span class="s-text"> نمایش البسه محصل</span>
+          <%}%>
+          <br>
+          </a>
+          <ul>
+            <% if(user.position!=="آمر لیلیه" ){ %>
+          <li><a href="/goods-management/add-studentKit">ثبت البسه محصل</a></li>
+          <%}%>
+              <li><a href="/goods-management/show-studentKits"> نمایش البسه محصل</a></li>
+              </ul>
+              </li>
+              
+              <li class="with-sub">
+            <a href="#" class="waves-effect  waves-light">
+              <span class="s-caret"><i class="fa fa-angle-down"></i></span>
+              <span class="s-icon"><i class="ti-package"></i></span>
+              <% if(user.position!=="آمر لیلیه" ){ %>
+          <span class="s-text"> ثبت و نمایش اجناس کارمند</span>
+          <%}%>
+                <% if(user.position==="آمر لیلیه" ){ %>
+          <span class="s-text"> نمایش اجناس کارمند</span>
+          <%}%>
+                  <br>
+                  </a>
+            <ul>
+              <% if(user.position!=="آمر لیلیه" ){ %>
+          <li><a href="/goods-management/add-kitStaff">ثبت اجناس کارمند</a></li>
+          <%}%>
+          <li><a href="/goods-management/show-staffKits"> نمایش اجناس کارمند</a></li>
+          </ul>
+          </li>
+          <% if(user.position!=="آمر لیلیه" ){ %>
+          <li>
+            <a href="/goods-management/edit-account/<%= user._id %>" class="waves-effect  waves-light">
+              <span class="s-icon"><i class="ti-settings"></i></span>
+              <span class="s-text">حساب کاربری</span>
+              <br>
+            </a>
+          </li>
+          <% } } %>
+
+          <!-- office management -->
+          <% if(user.position==="مدیر اداری" || user.position==="آمر لیلیه" ){ %>
+          <li class="menu-title">مدیریت اداری</li>
+          <% if(user.position!=="آمر لیلیه" ){ %>
+          <li>
+            <a href="/office-management/add-new-student" class="waves-effect  waves-light
+                  <%= path==='/office-management/add-new-student'? 'active' :'' %> 
+                  ">
+              <span class="s-icon"><i class="ti-plus"></i></span>
+              <span class="s-text">اضافه کردن محصل جدید</span>
+              <br>
+            </a>
+          </li>
+          <li>
+            <a href="/office-management/add-room" class="waves-effect  waves-light
+                      <%= path==='/office-management/add-room'? 'active' :'' %> 
+                      ">
+              <span class="s-icon"><i class="ti-home"></i></span>
+              <span class="s-text">راجستر اتاق</span>
+              <br>
+            </a>
+          </li>
+          <li>
+            <a href="/office-management/room-arangement" class="waves-effect  waves-light
+                      <%= path==='/office-management/room-arangement'? 'active' :'' %> 
+                      ">
+              <span class="s-icon"><i class="ti-save"></i></span>
+              <span class="s-text">ثبت محصل در اتاق</span>
+              <br>
+            </a>
+          </li>
+          <li>
+            <a href="/office-management/book-register" class="waves-effect  waves-light
+                      <%= path==='/office-management/book-register'? 'active' :'' %> 
+                      ">
+              <span class="s-icon"><i class="ti-book"></i></span>
+              <span class="s-text">راجستر کتاب</span>
+              <br>
+            </a>
+          </li>
+          <% } %>
+
+          <li>
+            <a href="/office-management/show-rooms" class="waves-effect  waves-light
+                      <%= path==='/office-management/students-in-room'? 'active' :'' %> ">
+              <span class="s-icon"><i class="ti-eye"></i></span>
+              <span class="s-text">نمایش محصلین در اتاق ها</span>
+              <br>
+            </a>
+          </li>
+
+          <li>
+            <a href="/office-management/show-books" class="waves-effect  waves-light
+                      <%= path==='/office-management/show-books'? 'active' :'' %> ">
+              <span class="s-icon"><i class="ti-bookmark-alt"></i></span>
+              <span class="s-text">نمایش کتاب ها</span>
+              <br>
+            </a>
+          </li>
+
+          <li class="with-sub">
+            <a class="waves-effect  waves-light">
+              <span class="s-caret"><i class="fa fa-angle-down"></i></span>
+              <span class="tag tag-info">5</span>
+              <span class="s-icon"><i class="ti-layers-alt"></i></span>
+              <span class="s-text">لیست محصلین</span>
+              <br>
+            </a>
+            <ul>
+              <li>
+                <a href="/office-management/show-exist-students"
+                  class="<%= path==='/office-management/show-exist-students'? 'active' :'' %> ">
+                  <span class="s-text">لیست محصلین برحال لیلیه</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="/office-management/show-hanging-students">
+                  <span class="s-text">لیست محصلین تعجیلی </span>
+                </a>
+              </li>
+
+              <li>
+                <a href="/office-management/show-suspension-students">
+                  <span class="s-text">لیست محصلین اخراج شده از لیلیه</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="/office-management/show-graduated-students">
+                  <span class="s-text">لیست محصلین فارغ شده از لیلیه</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="/office-management/show-students">
+                  <span class="s-text">لیست تمامی محصلین ثبت شده در دیتابس</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <% if(user.position==="مدیر اداری"){ %>
+          <li>
+            <a href="/office-management/edit-account/<%= user._id %>"" class="waves-effect  waves-light">
+              <span class="s-icon"><i class="ti-settings"></i></span>
+              <span class="s-text">حساب کاربری</span>
+              <br>
+            </a>
+          </li>
+          <% }else if(user.position==="آمر لیلیه"){%>
+            <li>
+              <a href="/admin/edit-user/<%= user._id %>" class="waves-effect  waves-light">
+                <span class="s-icon"><i class="ti-settings"></i></span>
+                <span class="s-text">حساب کاربری</span>
+                <br>
+              </a>
+            </li>
+            <li>
+              <a href="/admin/create-new-user">
+                <span class="s-icon"><i class="ti-user"></i></span>  
+                <span class="s-text">اضافه کردن کاربر</span>
+              </a>  
+            </li>
+          <%}} %>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <div class="site-header">
+      <nav class="navbar navbar-light">
+
+        <div class="navbar-left">
+          <a class="navbar-brand" href="/">
+            <!-- <div class="logo"></div> -->
+            <div style="color: white;"><%=user.position %>
+            </div>
+          </a>
+          <div class="toggle-button dark sidebar-toggle-first float-xs-left hidden-md-up">
+            <span class="hamburger"></span>
+          </div>
+          <div class="toggle-button dark float-xs-right hidden-md-up">
+            <i><a href="/logout" class="fa fa-sign-out" style="color: white;"></a></i>
+          </div>
+          <% if(user.position==="آمر لیلیه" ){ %>
+          <div class="toggle-button dark float-xs-right hidden-md-up">
+            <a href="/admin/create-new-user" class="ti-user" style="color: white;"></a>
+          </div>
+          <% } %>
+        </div>
+
+        <div class="navbar-right navbar-toggleable-sm collapse" id="collapse-1">
+          <div class="toggle-button dark sidebar-toggle-second float-xs-left hidden-sm-down">
+            <span class="hamburger"></span>
+          </div>
+          <div class="toggle-button-second light float-xs-right hidden-sm-down">
+            <i><a href="/logout" class="fa fa-sign-out" style="color: white;"></a></i>
+          </div>
+
+          <% if(user.position==="آمر لیلیه" ){ %>
+          <div class="toggle-button-second light float-xs-right hidden-sm-down">
+            <a href="/admin/create-new-user" class="ti-user" style="color: white;"></a>
+          </div>
+          <% } %>
+        </div>
+
+      </nav>
+    </div>
+
+    <div class="site-content">
+      <%- body %>
+
+      <!--
+      <footer class="footer">
+        <div class="container-fluid">
+          <div class="row text-xs-center">
+            <div class="col-sm-4 text-sm-left mb-0-5 mb-sm-0">
+              2022 © KPU Dormitory
+            </div>
+            <div class="col-sm-8 text-sm-right">
+              <ul class="nav nav-inline l-h-2">
+                <li class="nav-item"><a class="nav-link text-black" href="#">Privacy</a></li>
+                <li class="nav-item"><a class="nav-link text-black" href="#">Terms</a></li>
+                <li class="nav-item"><a class="nav-link text-black" href="#">Help</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+-->
+
+    </div>
+  </div>
+
+
+  <!-- thirdLayout -->
+  <% if(typeof thirdLayout!==undefined){ %>
+  <script type="text/javascript" src="../../../../dist/jquery.min.js"></script>
+  <script type="text/javascript" src="../../../../vendor/tether/js/tether.min.js"></script>
+  <script type="text/javascript" src="../../../../vendor/bootstrap4-rtl/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../../../vendor/detectmobilebrowser/detectmobilebrowser.js"></script>
+  <script type="text/javascript" src="../../../../vendor/jscrollpane/jquery.mousewheel.js"></script>
+  <script type="text/javascript" src="../../../../vendor/jscrollpane/mwheelIntent.js"></script>
+  <script type="text/javascript" src="../../../../vendor/jscrollpane/jquery.jscrollpane.min.js"></script>
+
+
+  <% if(typeof table!==undefined){ %>
+  <script type="text/javascript" src="../../../../vendor/DataTables/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="../../../../vendor/DataTables/js/dataTables.bootstrap4.min.js"></script>
+  <script type="text/javascript" src="../../../../vendor/DataTables/Buttons/js/dataTables.buttons.min.js"></script>
+  <script type="text/javascript" src="../../../../vendor/DataTables/Buttons/js/buttons.bootstrap4.min.js"></script>
+  <script type="text/javascript" src="../../../../vendor/DataTables/JSZip/jszip.min.js"></script>
+  <script type="text/javascript" src="../../../../vendor/DataTables/Buttons/js/buttons.html5.min.js"></script>
+  <script type="text/javascript" src="../../../../js/tables-datatable.js"></script>
+  <%} %>
+
+  <script type="text/javascript" src="../../../../js/app.js"></script>
+  <script type="text/javascript" src="../../../../js/demo.js"></script>
+
+  <!-- date picker -->
+  <script type="text/javascript" src="../../../../dist/moment.min.js"></script>
+  <script type="text/javascript" src="../../../../dist/js/bootstrap-hijri-datetimepicker.min.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#hijri-date-input").hijriDatePicker();
+    })
+    $(function () {
+      $("#hijri-date-input2").hijriDatePicker();
+    })
+  </script>
+
+  <!-- dropdown -->
+  <script>
+    /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var i;
+
+    for (i = 0; i < dropdown.length; i++) {
+      dropdown[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        var dropdownContent = this.nextElementSibling;
+        if (dropdownContent.style.display === "block") {
+          dropdownContent.style.display = "none";
+        } else {
+          dropdownContent.style.display = "block";
+        }
+      });
+    }
+
+  </script>
+  <!-- end of date picker -->
+
+  <% } else if(typeof secondLayout!==undefined){ %>
+  <!-- secondLayout -->
+  <script type="text/javascript" src="../../dist/jquery.min.js"></script>
+  <script type="text/javascript" src="../../vendor/tether/js/tether.min.js"></script>
+  <script type="text/javascript" src="../../vendor/bootstrap4-rtl/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../vendor/detectmobilebrowser/detectmobilebrowser.js"></script>
+  <script type="text/javascript" src="../../vendor/jscrollpane/jquery.mousewheel.js"></script>
+  <script type="text/javascript" src="../../vendor/jscrollpane/mwheelIntent.js"></script>
+  <script type="text/javascript" src="../../vendor/jscrollpane/jquery.jscrollpane.min.js"></script>
+
+
+  <% if(typeof table!==undefined){ %>
+  <script type="text/javascript" src="../../vendor/DataTables/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="../../vendor/DataTables/js/dataTables.bootstrap4.min.js"></script>
+  <script type="text/javascript" src="../../vendor/DataTables/Buttons/js/dataTables.buttons.min.js"></script>
+  <script type="text/javascript" src="../../vendor/DataTables/Buttons/js/buttons.bootstrap4.min.js"></script>
+  <script type="text/javascript" src="../../vendor/DataTables/JSZip/jszip.min.js"></script>
+  <script type="text/javascript" src="../../vendor/DataTables/Buttons/js/buttons.html5.min.js"></script>
+  <script type="text/javascript" src="../../js/tables-datatable.js"></script>
+  <%} %>
+
+  <script type="text/javascript" src="../../js/app.js"></script>
+  <script type="text/javascript" src="../../js/demo.js"></script>
+
+  <!-- date picker -->
+  <script type="text/javascript" src="../../dist/moment.min.js"></script>
+  <script type="text/javascript" src="../../dist/js/bootstrap-hijri-datetimepicker.min.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#hijri-date-input").hijriDatePicker();
+    })
+    $(function () {
+      $("#hijri-date-input2").hijriDatePicker();
+    })
+  </script>
+
+  <!-- dropdown -->
+  <script>
+    /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var i;
+
+    for (i = 0; i < dropdown.length; i++) {
+      dropdown[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        var dropdownContent = this.nextElementSibling;
+        if (dropdownContent.style.display === "block") {
+          dropdownContent.style.display = "none";
+        } else {
+          dropdownContent.style.display = "block";
+        }
+      });
+    }
+
+  </script>
+  <!-- end of date picker -->
+
+  <% } else if(typeof secondLayout===undefined){ %>
+  <!-- sidebar scripts -->
+  <script type="text/javascript" src="../vendor/tether/js/tether.min.js"></script>
+  <script type="text/javascript" src="../vendor/bootstrap4-rtl/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../vendor/detectmobilebrowser/detectmobilebrowser.js"></script>
+  <script type="text/javascript" src="../vendor/jscrollpane/jquery.mousewheel.js"></script>
+  <script type="text/javascript" src="../vendor/jscrollpane/mwheelIntent.js"></script>
+  <script type="text/javascript" src="../vendor/jscrollpane/jquery.jscrollpane.min.js"></script>
+
+  <% if(typeof table!==undefined){ %>
+  <script type="text/javascript" src="../vendor/DataTables/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="../vendor/DataTables/js/dataTables.bootstrap4.min.js"></script>
+  <script type="text/javascript" src="../vendor/DataTables/Buttons/js/dataTables.buttons.min.js"></script>
+  <script type="text/javascript" src="../vendor/DataTables/Buttons/js/buttons.bootstrap4.min.js"></script>
+  <script type="text/javascript" src="../vendor/DataTables/JSZip/jszip.min.js"></script>
+  <script type="text/javascript" src="../vendor/DataTables/Buttons/js/buttons.html5.min.js"></script>
+  <script type="text/javascript" src="../js/tables-datatable.js"></script>
+  <%} %>
+
+  <script type="text/javascript" src="../js/app.js"></script>
+  <script type="text/javascript" src="../js/demo.js"></script>
+
+  <!-- date picker -->
+  <script type="text/javascript" src="../dist/moment.min.js"></script>
+  <script type="text/javascript" src="../dist/js/bootstrap-hijri-datetimepicker.min.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#hijri-date-input").hijriDatePicker();
+    })
+    $(function () {
+      $("#hijri-date-input2").hijriDatePicker();
+    })
+  </script>
+
+  <!-- dropdown -->
+  <script>
+    /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var i;
+
+    for (i = 0; i < dropdown.length; i++) {
+      dropdown[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        var dropdownContent = this.nextElementSibling;
+        if (dropdownContent.style.display === "block") {
+          dropdownContent.style.display = "none";
+        } else {
+          dropdownContent.style.display = "block";
+        }
+      });
+    }
+
+  </script>
+  <!-- end of date picker -->
+
+  <% } %>
+
+</body>
+
+</html>

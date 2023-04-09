@@ -1,0 +1,7 @@
+<!-- Content -->
+<% if(user.position!=="مدیر اداری" ){ %>
+    <script>
+        window.location.replace("/404");
+    </script>
+    <% } %>
+        <%- include("../includes/tostSuccess") %>

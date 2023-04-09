@@ -1,0 +1,178 @@
+<!-- Content -->
+<div class="content-area py-1">
+    <div class="container-fluid">
+        <h4>ویرایش کردن کارمند </h4>
+        <ol class="breadcrumb no-bg mb-1">
+            <li class="breadcrumb-item"><a href="/">خانه</a></li>
+            <li class="breadcrumb-item"><a href="/office-management">مدیریت اداری</a></li>
+            <li class="breadcrumb-item active">ویرایش کردن کارمند</li>
+        </ol>
+        <div class="box box-block bg-white">
+            <h5 style="text-align: center;">ویرایش کردن کارمند</h5>
+            <br>
+
+            <form action="/goods-management/edit-staff/<%=staff._id%>" method="POST">
+                <br>
+
+
+                <div class="form-group row">
+                    <label for="example-text-input1" class="col-md-1 col-form-label">نام</label>
+                    <div class="col-md-3<% if(typeof errors!== undefined){
+						errors.forEach(error=>{
+							if(error.name==='name'){%>
+                    has-danger
+                    <%} }) } %>">
+                        <input class="form-control" type="text" name="name" value="<%= staff.name%>"
+                            placeholder="نام و نام خانوادگی" id="example-text-input1" required>
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='name'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+                    <label for="example-text-input12" class="col-md-1 col-form-label">نام
+                        پدر</label>
+                    <div class="col-md-3<% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='fName'){%>
+                            has-danger
+                    <%} }) } %>">
+                        <input class="form-control" type="text" name="fName" value="<%=staff.fName%>"
+                            placeholder="نام پدر" id="example-text-input2" required>
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='fName'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+                    <label for="example-text-input3" class="col-md-1 col-form-label">نام پدر
+                        کلان</label>
+                    <div class="col-md-3<% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='gFName'){%>
+                            has-danger
+                    <%} }) } %>">
+                        <input class="form-control" type="text" name="gFName" value="<%=staff.gFName%>"
+                            placeholder="نام پدر کلان" id="example-text-input3" required>
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='gFName'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+                </div>
+                <div class="form-group row">
+
+                    <label for="example-text-input4" class="col-md-1 col-form-label">وظیفه</label>
+                    <div class="col-md-3<% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='Job'){%>
+                            has-danger
+                    <%} }) } %>">
+                        <input class="form-control" type="text" name="Job" value="<%=staff.Job%>" placeholder="وظیفه"
+                            id="example-text-input4" required>
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='Job'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+
+                    <label for="example-text-input7" class="col-md-1 col-form-label">ولایت</label>
+                    <div class="col-md-3<% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='province'){%>
+                            has-danger
+                    <%} }) } %>">
+                        <input class="form-control" type="text" name="province" value="<%=staff.province%>"
+                            placeholder="ولایت" id="example-text-input7" required>
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='province'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+                    <label for="example-text-input8" class="col-md-1 col-form-label">ولسوالی</label>
+                    <div class="col-md-3<% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='destrict'){%>
+                            has-danger
+                    <%} }) } %>">
+                        <input class="form-control" type="text" name="destrict" placeholder="ولسوالی"
+                            value="<%=staff.destrict%>" id="example-text-input8" required>
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='destrict'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+
+                    <label for="example-text-input9" class="col-md-1 col-form-label">نمبر
+                        تذکره</label>
+                    <div class="col-md-3<% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='tazkiraNum'){%>
+                            has-danger
+                    <%} }) } %>">
+                        <input class="form-control" type="text" name="tazkiraNum" value="<%=staff.tazkiraNum%>"
+                            placeholder="نمبر تذکره" id="example-text-input9" required>
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='tazkiraNum'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+                    <label for="example-text-input5" class="col-md-1 col-form-label">آدی کارت</label>
+                    <div class="col-md-3<% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='idCard'){%>
+                            has-danger
+                    <%} }) } %>">
+                        <input class="form-control" type="text" name="idCard" value="<%=staff.idCard%>"
+                            placeholder="آدی کارت" id="example-text-input5" required>
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='idCard'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+                    <label for="example-text-input10" class="col-md-1 col-form-label">نمبر
+                        تلفون</label>
+                    <div class="col-md-3<% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='phoneNum'){%>
+                            has-danger
+                    <%} }) } %>">
+                        <input class="form-control" type="text" name="phoneNum" value="<%=staff.phoneNum%>"
+                            placeholder="شماره تماس" id="example-text-input10" required>
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='phoneNum'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="example-number-input" class="col-md-1 col-form-label">ویرایش
+                        کردن</label>
+                    <div class="col-md-11">
+                        <button type="submit" class="btn btn-primary">ویرایش کردن</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,190 @@
+<!-- Content -->
+<div class="content-area py-1">
+    <div class="container-fluid">
+
+        <h4>ویرایش اجناس کارمند</h4>
+        <ol class="breadcrumb no-bg mb-1">
+            <li class="breadcrumb-item"><a href="index.html">خانه</a></li>
+            <li class="breadcrumb-item"><a href="/goods-management">مدیریت جنسی</a></li>
+            <li class="breadcrumb-item acti
+            ve">ویرایش اجناس کارمند</li>
+        </ol>
+
+        <div class="box box-block bg-white">
+            <h5 style="text-align: center;">ویرایش اجناس کارمند در دیپو -</h5>
+            <br>
+
+            <form action="/goods-management/edit-oneStaffKit/<%=staffkits._id%>" method="POST" class="<% if(typeof errors!==undefined){ errors.forEach(error=>{
+                    if(error.name==='exist'){%>
+                        has-danger
+                    <%} }) } %> ">
+
+                <hr>
+                <div class="form-group row">
+
+
+                    <label for="example-text-input5" class="col-md-1 col-form-label">انتخاب جنس</label>
+                    <div class="col-md-3<% if(typeof errors!== undefined){
+                            errors.forEach(error=>{
+                                if(error.name==='goodName'){%>
+                    has-danger
+                    <%} }) } %>">
+
+                        <select name="goodName" class="form-control">
+                            <% good.forEach(g => { %>
+                            <option value="<%=g%>" <% if( g ==staffkits.goods_fk.name ){%> selected <% } %>>
+                                <%=g%> </option>
+                            <%})%>
+                        </select>
+
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='goodName'){%>
+                        <div class=" form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+                    <label for="example-text-input9" class="col-md-1 col-form-label">تعداد ویا مقدارجنس</label>
+                    <div class="col-md-3<% if(typeof errors!== undefined){
+                             errors.forEach(error=>{
+                                    if(error.name==='goodAmount'){%>
+                                    has-danger
+                               <%} }) } %>">
+                        <input class="form-control" type="number" min="0" name="goodAmount"
+                            value="<%=staffkits.goodAmount%>" id="example-text-input9" required>
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='goodAmount'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+
+
+                    </div>
+                    <label for="example-text-input10" class="col-md-1 col-form-label"> سال تحویل جنس</label>
+                    <div class="col-md-3<% if(typeof errors!== undefined){
+                        errors.forEach(error=>{
+                            if(error.name==='Dates'){%>
+                                has-danger
+                        <%} }) } %>">
+                        <input class="form-control" type="number" min="1343" max="1450" value="<%=staffkits.Dates%>"
+                            name="Dates" id="example-text-input10" required>
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+                                if(error.name==='Dates'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+
+
+                </div>
+
+                <div class="form-group row">
+
+                    <label for="example-text-input1" class="col-md-1 col-form-label">نام کتاب راجستر
+                    </label>
+                    <div class="col-md-3 <% if(typeof errors!== undefined){
+					errors.forEach(error=>{
+						if(error.name==='nameBook'){%>
+						has-danger
+						<%} }) } %>">
+                        <select name="nameBook" class="form-control">
+                            <% bookNames.forEach(b => { %>
+                            <option value="<%= b %>" <% if(b ==staffkits.registerBook_fk.name ){%> selected <% } %>>
+                                <%=b%>
+                            </option>
+                            <%})%>
+                        </select>
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+						if(error.name==='nameBook'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+
+                    <label for="example-text-input1" class="col-md-1 col-form-label">جلد کتاب</label>
+                    <div class="col-md-3 <% if(typeof errors!== undefined){
+					errors.forEach(error=>{
+						if(error.name==='skin'){%>
+						has-danger
+						<%} }) } %>">
+                        <select name="skin" class="form-control">
+                            <% skins.forEach(s => { %>
+                            <option value="<%= s %>" <% if(s ==staffkits.registerBook_fk.skin ){%> selected <% } %>>
+                                <%=s%></option>
+                            <%})%>
+                        </select>
+
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+						if(error.name==='skin'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+
+
+                    <label for="example-text-input1" class="col-md-1 col-form-label">صفحه کتاب</label>
+                    <div class="col-md-3<% if(typeof errors!== undefined){
+						errors.forEach(error=>{
+						if(error.name==='notExit'){%>
+						has-danger
+						<%} }) } %>">
+                        <select name="page" class="form-control">
+                            <% pages.forEach(p => { %>
+                            <option value="<%= p %>" <% if(p ==staffkits.registerBook_fk.page ){%> selected <% } %>>
+                                <%=p%>
+                            </option>
+                            <%})%>
+                        </select>
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='notExit'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="example-text-input1" class="col-md-1 col-form-label">سال کتاب</label>
+                    <div class="col-md-3 <% if(typeof errors!== undefined){
+					errors.forEach(error=>{
+						if(error.name==='year'){%>
+						has-danger
+						<%} }) } %>">
+                        <select name="year" class="form-control">
+                            <% years.forEach(y => { %>
+                            <option value="<%= y %>" <% if(y == staffkits.registerBook_fk.year ){ %> selected <% } %>>
+                                <%=y%></option>
+                            <%})%>
+                        </select>
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+						if(error.name==='year'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group row">
+                    <div class=" col-xs-6">
+                        <label for="example-number-input" class="col-xs-3 col-form-label">ذخیره
+                            کردن</label>
+                        <div class="col-xs-9">
+                            <button type="submit" class="btn btn-primary">ذخیره</button>
+                        </div>
+                    </div>
+                    <div class="col-xs-2"></div>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>
+<script src="../../js/staffajax.js">
+
+</script>

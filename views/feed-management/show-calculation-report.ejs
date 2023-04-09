@@ -1,0 +1,302 @@
+<div class="content-area py-1">
+	<div class="container-fluid">
+		<h4>گزارش توحید عمومی</h4>
+		<ol class="breadcrumb no-bg mb-1">
+			<li class="breadcrumb-item"><a href="/feed-management/show-daily-menus">مدیریت ارتزاقی</a></li>
+			<li class="breadcrumb-item"><a href="/feed-management/show-daily-purchase">گزارش خریداری روزانه</a></li>
+			<li class="breadcrumb-item active">گزارش توحید عمومی</li>
+		</ol>
+		<% if(amount == "one") { %>
+		<div class="box box-block bg-white">
+			<h4 style="text-align: center;">گزارش مجموعی</h4><br>
+			<div class="row">
+				<div class="col-xs-4">
+					<h6>موسسه: آمریت لیلیه پوهنتون پولی تخنیک کابل</h6>
+				</div>
+				<div class="col-xs-4">
+					<h6 style="text-align: center;">بیان نامه حساب</h6>
+				</div>
+				<div class="col-xs-4">
+					<h6 style="float: left;">از تاریخ <%= startDate %> الی <%= endDate %></h6>
+				</div>
+			</div>
+			<table class="table table-striped table-bordered dataTable">
+				<thead>
+					<tr>
+						<th>شماره</th>
+						<th>شهرت</th>
+						<th>اسم جنس</th>
+						<th>مقدار (کیلو گرام)</th>
+						<th>فیات (افغانی)</th>
+						<th>قیمت (افغانی)</th>
+						<th>نمره</th>
+						<th>تاریخ</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% let i = 1; let totalPrice = 0; let totalAmount = 0; %>
+					<% ingradient.forEach((element) => { %>
+					<tr>
+						<td><%= i++ %></td>
+						<td>
+							<% if(element.from != null) { %>
+							<%= element.from %>
+							<% } else { %>
+							دیپوی ارزاقی
+							<% } %>
+						</td>
+						<% if(i == 2){ %>
+						<td><%= element.ingradient %></td>
+						<% } else { %>
+						<td>//</td>
+						<% } %>
+						<td><%= element.amount %></td>
+						<td><%= element.price %></td>
+						<td><%= element.totalPrice %></td>
+						<td><%= element.docNumber %></td>
+						<td><%= element.date %></td>
+					</tr>
+					<% totalPrice = Number(totalPrice) + Number(element.totalPrice); %>
+					<% totalAmount = Number(totalAmount) + Number(element.amount); %>
+					<% }) %>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>مقدار مجموعی <%= totalAmount%> </td>
+						<td></td>
+						<td>قیمت مجموعی <%= totalPrice %></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<% } else if(amount == "more") { %>
+		<div class="box box-block bg-white">
+			<h4 style="text-align: center;">توحید عمومی</h4><br>
+			<div class="row">
+				<div class="col-xs-6">
+					<h6>موسسه: آمریت لیلیه پوهنتون پولی تخنیک کابل</h6>
+				</div>
+				<div class="col-xs-6">
+					<h6 style="float: left;">از تاریخ <%= startDate %> الی <%= endDate %></h6>
+				</div>
+			</div>
+			<table class="table table-striped table-bordered dataTable">
+				<thead>
+					<tr>
+						<th>شماره</th>
+						<th>نمبر راپور رسید و تاریخ</th>
+						<% for(let ingName of ingradientNames) { %>
+						<th><%= ingName %> <br>وزن (کیلو گرام)</th>
+						<% } %>
+					</tr>
+				</thead>
+				<tbody>
+					<% let i = 1; let ingTotalAmount = []; for(let i = 0; i < ingradientNames.length; i++) {ingTotalAmount[i] = 0} %>
+					<!-- tr -->
+					<% for(let date of dates) { let ttCounter = 0 %>
+					<tr>
+						<td><%= i++ %></td>
+						<td><%= date %></td>
+
+						<!-- td -->
+						<%
+						for(let name of ingradientNames) {
+						%>
+
+						<!-- fill the td -->
+						<%
+
+						let counter = 0;
+						let size = ingradient.length
+						for(let ing of ingradient){
+							counter++
+
+							if (ing.date === date) {
+
+								if (ing.ingradient === name) {
+						%>
+
+						<td><%= ing.amount %></td>
+
+						<% 
+						ingTotalAmount[ttCounter] += Number(ing.amount)
+						break } } 
+						if(counter === size){
+						%>
+
+						<td></td>
+
+						<%
+						} 
+
+						} //end of fill the td 
+						ttCounter++
+						} //end of td
+						%>
+
+					</tr>
+					<% } //end of row %>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td></td>
+						<td></td>
+						<% ingTotalAmount.forEach((element) => { %>
+						<td>مجموع کل (<%= element %>) کیلو گرام</td>
+						<% }) %>
+					</tr>
+				</tfoot>
+			</table>
+
+		</div>
+
+
+		<div class="box box-block bg-white">
+			<h4 style="text-align: center;">بیان نامه حساب</h4><br>
+			<div class="row">
+				<div class="col-xs-6">
+					<h6>موسسه: آمریت لیلیه پوهنتون پولی تخنیک کابل</h6>
+				</div>
+				<div class="col-xs-6">
+					<h6 style="float: left;">از تاریخ <%= startDate %> الی <%= endDate %></h6>
+				</div>
+			</div>
+			<table class="table table-striped table-bordered dataTable">
+				<thead>
+					<tr>
+						<th>شماره</th>
+						<th>شهرت</th>
+						<th>اسم جنس</th>
+						<th>وزن (کیلوگرام)</th>
+						<th>فیات (افغانی)</th>
+						<th>قیمت (افغانی)</th>
+					</tr>
+				</thead>
+				<tbody>
+					<%
+					let j = 1; let totalPrice = 0;
+					for(let k = 0; k < ingradientNames.length; k++) {
+						let price = 0;
+					%>
+					<tr>
+						<td><%= j++ %></td>
+						<td><%= ingradient[0].from %></td>
+						<td><%= ingradientNames[k] %></td>
+						<td><%= ingTotalAmount[k] %></td>
+						<% for(let element of ingradient) { %>
+						<% if(element.ingradient == ingradientNames[k]) { %>
+						<td><%= element.price %></td>
+						<% price = element.price; break; } } %>
+						<td><%= ingTotalAmount[k] * price %></td>
+					</tr>
+					<%  totalPrice += ingTotalAmount[k] * price } %>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>مجموع کل: <%= totalPrice %></td>
+					</tr>
+				</tfoot>
+			</table>
+
+		</div>
+
+
+		<% } else if(amount == "stkExports") { %>
+		<div class="box box-block bg-white">
+			<div class="row">
+				<div class="col-xs-12">
+					<h5 style="text-align: center;">فورم توحید عمومی تابلوی حبوبات اعاشه محصلان لیلیه
+						پوهنتون پولی تخنیک کابل
+						از تاریخ <%= startDate %> الی <%= endDate %> مواد داخل گدام</h5>
+				</div>
+			</div><br>
+			<form action="/feed-management/download-report-stockExport" method="POST">
+				<input type="hidden" name="startDate" value="<%= startDate %>">
+				<input type="hidden" name="endDate" value="<%= endDate %>">
+				<!--
+				<button class="btn btn-primary">
+					<li class="fa fa-download"></li> پرینت
+				</button>
+				-->
+			</form>
+			<table class="table table-striped table-bordered dataTable">
+				<thead>
+					<tr>
+						<th>شماره</th>
+						<th>تاریخ تابلوهای یومیه</th>
+						<% for(let ingName of ingradientNames) { %>
+						<th><%= ingName %> <br>(کیلو گرام)</th>
+						<% } %>
+					</tr>
+				</thead>
+				<tbody>
+					<% let i = 1; let ingTotalAmount = []; for(let i = 0; i < ingradientNames.length; i++) {ingTotalAmount[i] = 0} %>
+					<!-- tr -->
+					<% for(let date of dates) { let ttCounter = 0 %>
+					<tr>
+						<td><%= i++ %></td>
+						<td><%= date %></td>
+
+						<!-- td -->
+						<%
+									for(let name of ingradientNames) {
+									%>
+
+						<!-- fill the td -->
+						<%
+			
+									let counter = 0;
+									let size = ingradient.length
+									for(let ing of ingradient){
+										counter++
+
+										if (ing.date === date) {
+			
+											if (ing.ingradient === name) {
+									%>
+
+						<td><%= ing.amount %></td>
+
+						<% 
+									ingTotalAmount[ttCounter] += Number(ing.amount)
+									break } } 
+									if(counter === size){
+									%>
+
+						<td></td>
+
+						<%
+									} 
+			
+									} //end of fill the td 
+									ttCounter++
+									} //end of td
+									%>
+
+					</tr>
+					<% } //end of row %>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td></td>
+						<td></td>
+						<% ingTotalAmount.forEach((element) => { %>
+						<td>مجموع کل (<%= element %>) کیلو گرام</td>
+						<% }) %>
+					</tr>
+				</tfoot>
+			</table>
+
+		</div>
+		<% } %>
+
+	</div>
+</div>

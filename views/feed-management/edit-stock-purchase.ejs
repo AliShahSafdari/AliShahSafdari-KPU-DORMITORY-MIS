@@ -1,0 +1,149 @@
+<div class="content-area py-1">
+	<div class="container-fluid">
+		<h4>ویرایش ادخال به دیپو</h4>
+		<ol class="breadcrumb no-bg mb-1">
+			<li class="breadcrumb-item"><a href="/feed-management/show-daily-menus">مدیریت ارتزاقی</a></li>
+			<li class="breadcrumb-item"><a href="/feed-management/show-stock-purchase">گزارش ادخالات به دیپو</a></li>
+			<li class="breadcrumb-item active">ویرایش ادخال به دیپو</li>
+		</ol>
+		<div class="box box-block bg-white">
+			<div class="row">
+				<div class="col-xs-12">
+					<h3 class="mb-1" style="text-align: center;">ویرایش ادخال به دیپو</h3>
+				</div>
+			</div>
+			<br>
+			<hr>
+			<form action="/feed-management/edit-stock-purchase" method="POST">
+				<input type="hidden" name="purchaseId" value="<%= stockPurchase.id%>">
+				<br>
+				<div class="form-group row">
+					<label for="example-text-input1" class="col-md-1 col-form-label">نمبر
+						مکتوب</label>
+					<div class="col-md-3
+						<% if(typeof errors!== undefined){
+							errors.forEach(error=>{
+								if(error.name==='docNumber'){%>
+									has-danger
+							<%} }) } %>
+						">
+						<input class="form-control" type="text" name="docNumber" autocomplete="off"
+							value="<%= stockPurchase.docNumber%>">
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='docNumber'){%>
+						<div class="form-control-feedback">
+							<%= error.message %>
+						</div>
+						<%} }) } %>
+					</div>
+					<label for="example-text-input4" class="col-md-1 col-form-label">تاریخ</label>
+					<div class="col-md-3
+						<% if(typeof errors!== undefined){
+							errors.forEach(error=>{
+								if(error.name==='date'){%>
+									has-danger
+							<%} }) } %>
+						">
+						<!-- <input type="date" class="form-control" name="date"> -->
+						<input type="tel" class="form-control" id="hijri-date-input" name="date" autocomplete="off"
+							pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" placeholder="<%= formDate(stockPurchase.date) %>">
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='date'){%>
+						<div class="form-control-feedback">
+							<%= error.message %>
+						</div>
+						<%} }) } %>
+					</div>
+					<label for="example-text-input1" class="col-md-1 col-form-label">اخذ شده
+						از</label>
+					<div class="col-md-3
+						<% if(typeof errors!== undefined){
+							errors.forEach(error=>{
+								if(error.name==='from'){%>
+									has-danger
+							<%} }) } %>
+						">
+						<input class="form-control" type="text" name="from" autocomplete="off"
+							value="<%= stockPurchase.from %>">
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='from'){%>
+						<div class="form-control-feedback">
+							<%= error.message %>
+						</div>
+						<%} }) } %>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="example-text-input1" class="col-md-1 col-form-label">نام جنس</label>
+					<div class="col-md-3">
+						<input class="form-control" type="text" name="ingradient" autocomplete="off"
+							value="<%= stockPurchase.ingradient %>" readonly>
+					</div>
+					<label for="example-text-input4" class="col-md-1 col-form-label">مقدار (کیلو
+						گرام)</label>
+					<div class="col-md-3
+						<% if(typeof errors!== undefined){
+							errors.forEach(error=>{
+								if(error.name==='amount'){%>
+									has-danger
+							<%} }) } %>
+						">
+						<input class="form-control" type="number" step="any" placeholder="کیلو گرام" name="amount"
+							value="<%= stockPurchase.amount %>">
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='amount'){%>
+						<div class="form-control-feedback">
+							<%= error.message %>
+						</div>
+						<%} }) } %>
+					</div>
+					<label for="example-text-input5" class="col-md-1 col-form-label">قیمت فیات
+						(افغانی)</label>
+					<div class="col-md-3
+						<% if(typeof errors!== undefined){
+							errors.forEach(error=>{
+								if(error.name==='price'){%>
+									has-danger
+							<%} }) } %>
+						">
+						<input class="form-control" type="number" step="any" name="price"
+							value="<%= stockPurchase.price %>" placeholder="افغانی">
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='price'){%>
+						<div class="form-control-feedback">
+							<%= error.message %>
+						</div>
+						<%} }) } %>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="example-text-input4" class="col-md-1 col-form-label">توضیحات</label>
+					<div class="col-md-7
+						<% if(typeof errors!== undefined){
+							errors.forEach(error=>{
+								if(error.name==='description'){%>
+									has-danger
+							<%} }) } %>
+						">
+						<textarea id="textarea" class="form-control" maxlength="300" rows="5"
+							name="description"><%= stockPurchase.desciprtion %></textarea>
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='description'){%>
+						<div class="form-control-feedback">
+							<%= error.message %>
+						</div>
+						<%} }) } %>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="example-number-input" class="col-md-1 col-form-label">ذخیره
+						کردن</label>
+					<div class="col-md-11">
+						<button type="submit" class="btn btn-primary">ذخیره</button>
+					</div>
+				</div>
+			</form>
+
+		</div>
+	</div>
+</div>

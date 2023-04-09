@@ -1,0 +1,186 @@
+<div class="content-area py-1">
+	<div class="container-fluid">
+		<h4>گزارش مجموعی</h4>
+		<ol class="breadcrumb no-bg mb-1">
+			<li class="breadcrumb-item"><a href="/feed-management/show-daily-menus">مدیریت ارتزاقی</a></li>
+			<li class="breadcrumb-item active">گزارش مجموعی</li>
+		</ol>
+		<div class="box box-block bg-white">
+			<h4 style="text-align: center;">گزارش مجموعی</h4><br>
+			<h5 class="mb-1" style="text-align: center;">گزارش تابلوی (<%= todayMenu.menuType %>) حواله اعاشه محصلان
+				لیلیه پوهنتون پولی تخنیک کابل
+				از بابت (<%= formDate(todayMenu.date) %> )</h5>
+			<h5 class="mb-1" style="text-align: center;">تعداد محصلین حاضر در هر وقت <%= todayMenu.numberOfStudents %>
+			</h5>
+			<table class="table table-striped table-bordered dataTable">
+				<thead>
+					<tr>
+						<th>شماره</th>
+						<th>جنس</th>
+						<th>مقدار (کیلو گرام)</th>
+						<th>فیات (افغانی)</th>
+						<th>قیمت (افغانی)</th>
+						<th>اخذ گردیده از</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% let i = 1; let totalMenuPrice = 0; %>
+					<% ingradients.forEach((element) => { %>
+					<tr>
+						<td><%= i++ %></td>
+						<td><%= element.ingradient %></td>
+						<td><%= element.amount %></td>
+						<td><%= element.price %></td>
+						<td><%= element.totalPrice %></td>
+						<td>
+							<% if(element.from != null) { %>
+							<%= element.from %>
+							<% } else { %>
+							دیپوی ارزاقی
+							<% } %>
+						</td>
+					</tr>
+					<% totalMenuPrice = Number(totalMenuPrice) + Number(element.totalPrice); %>
+					<% }) %>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="4">
+							<h6>توضیحات</h6>
+							<p>گزارش تابلوی (<%= todayMenu.menuType %>) حواله اعاشه محصلان
+								لیلیه پوهنتون پولی تخنیک کابل
+								از تاریخ (<%= formDate(todayMenu.date) %> )</p>
+							<p>
+								تعداد محصلین حاضر در هر وقت <%= todayMenu.numberOfStudents %> نفر می باشد.
+							</p>
+						</td>
+						<td colspan="2">قیمت مجموعی <%= Number(totalMenuPrice.toFixed(3)) %></td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+
+
+		<!-- stock exports details -->
+		<div class="box box-block bg-white">
+			<h4 style="text-align: center;">گزارشات جزئی: اجناس دیپو</h4><br>
+			<h5 class="mb-1" style="text-align: center;">گزارش تابلوی (<%= todayMenu.menuType %>) حواله اعاشه محصلان
+				لیلیه پوهنتون پولی تخنیک کابل
+				از بابت (<%= formDate(todayMenu.date) %> )</h5>
+			<h5 class="mb-1" style="text-align: center;">تعداد محصلین حاضر در هر وقت <%= todayMenu.numberOfStudents %>
+			</h5>
+			<table class="table table-striped table-bordered dataTable">
+				<thead>
+					<tr>
+						<th>شماره</th>
+						<th>جنس</th>
+						<th>مقدار (کیلو گرام)</th>
+						<th>فیات (افغانی)</th>
+						<th>قیمت (افغانی)</th>
+						<th>اخذ گردیده از</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% let j = 1; let totalStockExport = 0; %>
+					<% stkExpIng.forEach((element) => { %>
+					<tr>
+						<td><%= j++ %></td>
+						<td><%= element.ingradient %></td>
+						<td><%= element.amount %></td>
+						<td><%= element.price %></td>
+						<td><%= element.totalPrice %></td>
+						<td>
+							<% if(element.from != null) { %>
+							<%= element.from %>
+							<% } else { %>
+							دیپوی ارزاقی
+							<% } %>
+						</td>
+					</tr>
+					<% totalStockExport = Number(totalStockExport) + Number(element.totalPrice); %>
+					<% }) %>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="4">
+							<h6>توضیحات</h6>
+							<p>گزارش تابلوی (<%= todayMenu.menuType %>) حواله اعاشه محصلان
+								لیلیه پوهنتون پولی تخنیک کابل
+								از تاریخ (<%= formDate(todayMenu.date) %> )</p>
+							<p>
+								تعداد محصلین حاضر در هر وقت <%= todayMenu.numberOfStudents %> نفر می باشد.
+							</p>
+						</td>
+						<td colspan="2">قیمت مجموعی <%= Number(totalStockExport.toFixed(3)) %></td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+		<!-- end of stock exports -->
+
+
+		<!-- m7 details -->
+		<% for(let m7Number of m7Numbers) { %>
+
+		<div class="box box-block bg-white">
+			<h4 style="text-align: center;">گزارشات جزئی: م-7 (<%= m7Number %> )</h4><br>
+			<h5 class="mb-1" style="text-align: center;">گزارش تابلوی (<%= todayMenu.menuType %>) حواله اعاشه محصلان
+				لیلیه پوهنتون پولی تخنیک کابل
+				از بابت (<%= formDate(todayMenu.date) %> )</h5>
+			<h5 class="mb-1" style="text-align: center;">تعداد محصلین حاضر در هر وقت <%= todayMenu.numberOfStudents %>
+			</h5>
+			<table class="table table-striped table-bordered dataTable">
+				<thead>
+					<tr>
+						<th>شماره</th>
+						<th>جنس</th>
+						<th>مقدار (کیلو گرام)</th>
+						<th>فیات (افغانی)</th>
+						<th>قیمت (افغانی)</th>
+						<th>اخذ گردیده از</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% let j = 1; let totalM7Price = 0; %>
+					<% m7PIng.forEach((element) => { %>
+					<% if(element.docNumber == m7Number) { %>
+					<tr>
+						<td><%= j++ %></td>
+						<td><%= element.ingradient %></td>
+						<td><%= element.amount %></td>
+						<td><%= element.price %></td>
+						<td><%= element.totalPrice %></td>
+						<td>
+							<% if(element.from != null) { %>
+							<%= element.from %>
+							<% } else { %>
+							دیپوی ارزاقی
+							<% } %>
+						</td>
+					</tr>
+					<% totalM7Price = Number(totalM7Price) + Number(element.totalPrice); %>
+					<% } }) %>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="4">
+							<h6>توضیحات</h6>
+							<p>گزارش تابلوی (<%= todayMenu.menuType %>) حواله اعاشه محصلان
+								لیلیه پوهنتون پولی تخنیک کابل
+								از تاریخ (<%= formDate(todayMenu.date) %> )</p>
+							<p>
+								تعداد محصلین حاضر در هر وقت <%= todayMenu.numberOfStudents %> نفر می باشد.
+							</p>
+						</td>
+						<td colspan="2">قیمت مجموعی <%= totalM7Price %></td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+
+		<% } %>
+		<!-- end of m7 details -->
+
+
+	</div>
+</div>

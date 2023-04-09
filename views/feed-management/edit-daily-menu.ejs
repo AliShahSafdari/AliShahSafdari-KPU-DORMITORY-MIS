@@ -1,0 +1,119 @@
+<!-- Content -->
+<div class="content-area py-1">
+	<div class="container-fluid">
+		<h4>ویرایش اعاشه یومیه</h4>
+		<ol class="breadcrumb no-bg mb-1">
+			<li class="breadcrumb-item"><a href="/feed-management/show-daily-menus">مدیریت ارتزاقی</a></li>
+			<li class="breadcrumb-item active">ویرایش اعاشه یومیه</li>
+		</ol>
+		<div class="box box-block bg-white">
+			<div class="row">
+				<div class="col-xs-12">
+					<h3 class="mb-1" style="text-align: center;">ویرایش اعاشه یومیه</h3>
+					<h3 class="mb-1" style="text-align: center;">تابلوی (<%= dlMenu.menuType %>)</h3>
+				</div>
+			</div>
+			<br>
+			<form action="/feed-management/edit-daily-menu-report" method="POST">
+				<input name="menuId" class="btn btn-primary" type="hidden" value="<%= dlMenu.id %>">
+				<br>
+				<div class="form-group row">
+					<div class="col-md-3"></div>
+					<label class="col-xs-1 col-form-label">نمبر راپور
+						حاضری</label>
+					<div class="col-xs-4
+						<% if(typeof errors!== undefined){
+							errors.forEach(error=>{
+								if(error.name==='attReportNumber'){%>
+									has-danger
+									<%} }) } %>
+									">
+						<input class="form-control" type="text" name="attReportNumber" maxlength="10" autocomplete="off"
+							value="<%= dlMenu.attReportNumber %>">
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+										if(error.name==='attReportNumber'){%>
+						<div class="form-control-feedback">
+							<%= error.message %>
+						</div>
+						<%} }) } %>
+					</div>
+					<div class="col-md-4"></div>
+				</div>
+				<div class="form-group row">
+					<div class="col-md-3"></div>
+					<label class="col-xs-1 col-form-label">تاریخ</label>
+					<div class="col-xs-4
+						<% if(typeof errors!== undefined){
+							errors.forEach(error=>{
+								if(error.name==='date'){%>
+									has-danger
+									<%} }) } %>
+									">
+						<!-- <input type="date" class="form-control" name="date"> -->
+						<input type="tel" class="form-control" id="hijri-date-input" name="date" autocomplete="off"
+							pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" placeholder="<%= dlMenu.date %>">
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='date'){%>
+						<div class="form-control-feedback">
+							<%= error.message %>
+						</div>
+						<%} }) } %>
+					</div>
+					<div class="col-md-4"></div>
+				</div>
+				<div class="form-group row">
+					<div class="col-md-3"></div>
+					<label class="col-xs-1 col-form-label">تعداد محصل
+						حاضر</label>
+					<div class="col-xs-4
+					<% if(typeof errors!== undefined){
+						errors.forEach(error=>{
+							if(error.name==='numberOfStudents'){%>
+								has-danger
+								<%} }) } %>
+								">
+						<input class="form-control" type="number" name="numberOfStudents" max="3000"
+							value="<%= dlMenu.numberOfStudents %>" min="0">
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+									if(error.name==='numberOfStudents'){%>
+						<div class=" form-control-feedback">
+							<%= error.message %>
+						</div>
+						<%} }) } %>
+					</div>
+					<div class="col-md-4"></div>
+				</div>
+				<div class="form-group row">
+					<div class="col-md-3"></div>
+					<label class="col-xs-1 col-form-label">توضیحات</label>
+					<div class="col-xs-4
+						<% if(typeof errors!== undefined){
+							errors.forEach(error=>{
+								if(error.name==='descriptions'){%>
+									has-danger
+									<%} }) } %>
+									">
+						<textarea id="textarea" class="form-control" maxlength="300" rows="8" placeholder="توضیحات ..."
+							name="descriptions"><%= dlMenu.descriptions %></textarea>
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+										if(error.name==='descriptions'){%>
+						<div class="form-control-feedback">
+							<%= error.message %>
+						</div>
+						<%} }) } %>
+					</div>
+					<div class="col-md-4"></div>
+				</div>
+				<div class="form-group row">
+					<div class="col-md-3"></div>
+					<label for="example-number-input" class="col-xs-1 col-form-label">ذخیره
+						تغییرات</label>
+					<div class="col-xs-4">
+						<button type="submit" class="btn btn-primary">ذخیره</button>
+					</div>
+					<div class="col-md-4"></div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

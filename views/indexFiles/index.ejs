@@ -1,0 +1,67 @@
+<!-- Content -->
+<% if(user.position==="مدیر اداری" ){ %>
+    <script>
+        window.location.replace("/office-management/show-students");
+    </script>
+    <% } %>
+<% if(user.position==="مدیر ارتزاقی" ){ %>
+    <script>
+        window.location.replace("/feed-management/show-daily-menus");
+    </script>
+    <% } %>
+<% if(user.position==="مدیر جنسی" ){ %>
+    <script>
+        window.location.replace("/goods-management/show-goods");
+    </script>
+    <% } %>
+    <div class="content-area py-1">
+        <div class="container-fluid">
+            <ol class="breadcrumb no-bg mb-1">
+                <li class="breadcrumb-item"><a href="/">خانه</a></li>
+            </ol>
+
+            <div class="box box-block bg-white">
+                <br>
+                <div class="row ">
+                    <div class="col-md-2 ">
+                        <button type="button" id="backup"
+                            class="btn btn-outline-success mb-0-25 waves-effect waves-light"><i class="ti-settings"></i>
+                            backup</button>
+                    </div>
+                    <div class="col-md-8 box">
+                        <form id="restordbButton" enctype="multipart/form-data">
+                            <div class="col-md-2">
+                                <button type="submit" class="btn btn-outline-primary" style="margin-top: 3px;"><i
+                                        class="ti-settings"></i>
+                                    restore</button>
+                            </div>
+                            <div class="col-md-10">
+                                <input type="file" name="store" id="storeRes" class="form-control">
+                            </div>
+                            <span id="fileStatus"></span>
+                        </form>
+
+                    </div>
+                    <div class=" col-md-1"></div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+    <!-- restore -->
+    <script type="text/javascript" src="../js/restoreAjax.js"></script>
+    <!-- backup -->
+    <script type="text/javascript" src="../js/restoreAjax.js"></script>

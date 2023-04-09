@@ -1,0 +1,132 @@
+<!-- Content -->
+<div class="content-area py-1">
+	<div class="container-fluid">
+		<h4>منوی امروز</h4>
+		<ol class="breadcrumb no-bg mb-1">
+			<li class="breadcrumb-item"><a href="/index">مدیریت ارتزاقی</a></li>
+			<li class="breadcrumb-item active">منوی امروز</li>
+		</ol>
+		<div class="box box-block bg-white">
+			<h5 style="text-align: center;">ترتیب منوی غذایی</h5>
+			<% if(typeof errors!==undefined){ errors.forEach(error=>{
+				if(error.name==='dbError') { %>
+			<div class="form-control-feedback" style="text-align: center; color: red;">
+				<%= error.message %>
+			</div>
+			<% } else if(error.name === 'stockError'){ %>
+			<div class="form-control-feedback" style="text-align: center; color: red;">
+				<%= error.message %>
+			</div>
+			<% } %>
+
+			<% }) } %>
+			<br>
+			<form action="/feed-management/today-menu" method="POST">
+				<br>
+				<div class="form-group row">
+					<label class="col-xs-1 col-form-label">نمبر راپور
+						حاضری</label>
+					<div class="col-xs-5
+					<% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='attReportNumber'){%>
+                            has-danger
+                    <%} }) } %>
+					">
+						<input class="form-control" type="text" placeholder="0000000000" name="attReportNumber"
+							maxlength="24">
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='attReportNumber'){%>
+						<div class="form-control-feedback">
+							<%= error.message %>
+						</div>
+						<%} }) } %>
+					</div>
+					<label class="col-xs-1 col-form-label">تعداد محصل
+						حاضر</label>
+					<div class="col-xs-5
+					<% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='numberOfStudents'){%>
+                            has-danger
+                    <%} }) } %>
+					">
+						<input class="form-control" type="number" name="numberOfStudents" max="3000" value="0">
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='numberOfStudents'){%>
+						<div class="form-control-feedback">
+							<%= error.message %>
+						</div>
+						<%} }) } %>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-xs-1 col-form-label">منوی غذایی</label>
+					<div class="col-xs-5
+					<% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='menuType'){%>
+                            has-danger
+                    <%} }) } %>
+					">
+						<select class="form-control mb-1" name="menuType">
+							<option value="">انتخاب منوی غذایی</option>
+							<% foodMenu.forEach((element) => { %>
+							<option value="<%= element %>">منوی غذایی (<%= element %>)</option>
+							<% }) %>
+						</select>
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='menuType'){%>
+						<div class="form-control-feedback">
+							<%= error.message %>
+						</div>
+						<%} }) } %>
+					</div>
+					<label class="col-xs-1 col-form-label">تاریخ</label>
+					<div class="col-xs-5
+					<% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='date'){%>
+                            has-danger
+                    <%} }) } %>
+					">
+						<input type="date" class="form-control" name="date">
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='date'){%>
+						<div class="form-control-feedback">
+							<%= error.message %>
+						</div>
+						<%} }) } %>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-xs-1 col-form-label">توضیحات</label>
+					<div class="col-xs-5
+					<% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='descriptions'){%>
+                            has-danger
+                    <%} }) } %>
+					">
+						<textarea id="textarea" class="form-control" maxlength="300" rows="8" placeholder="توضیحات ..."
+							name="descriptions"></textarea>
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='descriptions'){%>
+						<div class="form-control-feedback">
+							<%= error.message %>
+						</div>
+						<%} }) } %>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="example-number-input" class="col-xs-1 col-form-label">ذخیره کردن</label>
+					<div class="col-xs-11">
+						<button type="submit" class="btn btn-primary">ذخیره</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="../../js/feed-ajax.js"></script>

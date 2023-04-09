@@ -1,0 +1,26 @@
+<% if(typeof message.success_msg !== 'undefined' ){ %>
+
+<script>
+    $(document).ready(function () {
+        toastr.options = {
+            "positionClass": "toast-top-center",
+        }
+        toastr.success("<%= message.success_msg %>", { timeOut: 6000 });
+    });
+</script>
+
+<% } %>
+
+<!-- errror message -->
+<% if(typeof message.error_msg !== 'undefined' ){ %>
+
+<script>
+    $(document).ready(function () {
+        toastr.options = {
+            "positionClass": "toast-top-center",
+        }
+        toastr.error("<%= message.error_msg %>", { timeOut: 6000 });
+    });
+</script>
+
+<% } %>

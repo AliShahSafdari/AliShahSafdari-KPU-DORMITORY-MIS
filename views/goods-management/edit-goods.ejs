@@ -1,0 +1,63 @@
+<!-- Content -->
+<div class="content-area py-1">
+	<div class="container-fluid">
+		<h4>ویرایش کردن اجناس</h4>
+		<ol class="breadcrumb no-bg mb-1">
+			<li class="breadcrumb-item"><a href="index.html">خانه</a></li>
+			<li class="breadcrumb-item"><a href="/goods-management">مدیریت جنسی</a></li>
+			<li class="breadcrumb-item active">ویرایش کردن اجناس</li>
+		</ol>
+		<div class="box box-block bg-white">
+			<h5 style="text-align: center;">ثبت اجناس جدید در دیپو - یکشنبه 21 اسد سال 1402</h5>
+			<br>
+			<form action="/goods-management/edit-goods/<%= good.id %>" method="POST">
+				<br>
+
+				<div class="form-group row">
+					<div class="col-xs-3"></div>
+					<label for="example-text-input1" class="col-xs-1 col-form-label">نام جنس</label>
+					<div class="col-xs-6<% if(typeof errors!== undefined){
+						errors.forEach(error=>{
+							if(error.name==='name'){%>
+								has-danger
+						<%} }) } %>">
+						<input class="form-control mb-1" type="text" name="name" value="<%= good.name%>"
+							id="example-text-input1">
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='name'){%>
+						<div class="form-control-feedback">
+							<%= error.message %>
+						</div>
+						<%} }) } %>
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-xs-3"></div>
+					<label for="example-text-input1" class="col-xs-1 col-form-label">قیمت جنس</label>
+					<div class="col-xs-6<% if(typeof errors!== undefined){
+						errors.forEach(error=>{
+							if(error.price==='price'){%>
+								has-danger
+						<%} }) } %>">
+						<input class="form-control mb-1" type="number" step=".01" value="<%= good.price%>" name="price"
+							id="example-text-input1">
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.price=='price'){%>
+						<div class="form-control-feedback">
+							<%= error.message %>
+						</div>
+						<%} }) } %>
+					</div>
+				</div>
+				<hr>
+				<div class="form-group row">
+					<div class=" col-xs-3"></div>
+					<label for="example-number-input" class="col-xs-1 col-form-label">ویرایش نمودن</label>
+					<div class="col-xs-8">
+						<button type="submit" class="btn btn-primary">ویرایش</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

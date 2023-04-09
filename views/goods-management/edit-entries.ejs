@@ -1,0 +1,272 @@
+<!-- Content -->
+<div class="content-area py-1">
+    <div class="container-fluid">
+        <h4>ویرایش ادخالات</h4>
+        <ol class="breadcrumb no-bg mb-1">
+            <li class="breadcrumb-item"><a href="index.html">خانه</a></li>
+            <li class="breadcrumb-item"><a href="/goods-management">مدیریت جنسی</a></li>
+            <li class="breadcrumb-item active">ویرایش ادخالات</li>
+        </ol>
+
+        <div class="box box-block bg-white">
+            <h5 style="text-align: center;">ویرایش ادخالات </h5>
+            <br>
+
+            <form action="/goods-management/edit-entries/<%= entry.id %>" method="POST">
+                <br>
+
+                <h5>دیپو</h5>
+                <div class="form-group row">
+                    <label for=" example-text-input1" class="col-md-1 col-form-label">انتخاب جنس</label>
+
+                    <div class="col-md-3
+					<% if(typeof errors!== undefined){
+							errors.forEach(error=>{
+								if(error.name==='goods_fk'){%>
+					has-danger
+					<%} }) } %>
+					">
+                        <select name="goods_fk" class="form-control">
+                            <% goods.forEach(element => { %>
+                            <% if (element._id.equals(entry.goods_fk._id)) {%>
+                            <option value="<%=element._id %>" selected> <%=element.name %></option>
+                            <% }else{%>
+                            <option value="<%= element._id %>"><%= element.name %></option>
+                            <% }}); %>
+                        </select>
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+				if(error.name==='goods_fk'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+
+                    <label for="example-text-input1" class="col-md-1 col-form-label"> مقدار و یا تعداد جنس</label>
+
+                    <div class="col-md-3 <% if(typeof errors!== undefined){
+					errors.forEach(error=>{
+						if(error.name==='quantity'){%>
+							has-danger
+							<%} }) } %>">
+                        <input class="form-control mb-1" type="number" value="<%=entry.quantity%>" name="quantity"
+                            id="example-text-input1">
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+				if(error.name==='quantity'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+
+                    <label for="example-text-input1" class="col-md-1 col-form-label">قیمت جنس</label>
+
+                    <div class="col-md-3 <% if(typeof errors!== undefined){
+						errors.forEach(error=>{
+						if(error.name==='price'){%>
+						has-danger
+						<%} }) } %>">
+                        <input class="form-control mb-1" type="number" value="<%=entry.price%>" name="price"
+                            id="example-text-input1">
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='price'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+
+                    <label for="example-text-input1" class="col-md-1 col-form-label">حواله وارده</label>
+
+                    <div class="col-md-3<% if(typeof errors!== undefined){
+						errors.forEach(error=>{
+						if(error.name==='numDoc'){%>
+						has-danger
+						<%} }) } %>">
+                        <select name="numDoc" class="form-control">
+                            <% entryDocument.forEach(entryD => { %>
+                            <option value="<%= entryD %>" <% if(entryD == entry.entryDocument_fk.docNum){ %> selected
+                                <% } %>>
+                                <%=entryD%>
+                            </option>
+                            <%})%>
+                        </select>
+
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='numDoc'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+
+                    <label for="example-text-input1" class="col-md-1 col-form-label">از جایکه اخذ شده</label>
+
+                    <div class="col-md-3 <% if(typeof errors!== undefined){
+					errors.forEach(error=>{
+						if(error.name==='placeFromRecieved'){%>
+						has-danger
+						<%} }) } %>">
+                        <input class="form-control mb-1" type="text" placeholder="از جاییکه اخذ شده"
+                            name="placeFromRecieved" id="example-text-input1" value="<%= entry.placeFromRecieved%>">
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+						if(error.name==='placeFromRecieved'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+
+                    <label for="example-text-input1" class="col-md-1 col-form-label">تاریخ</label>
+
+                    <div class="col-md-3<% if(typeof errors!== undefined){
+						errors.forEach(error=>{
+						if(error.name==='dates'){%>
+						has-danger
+                        <%} }) } %>">
+                        <input type="tel" class="form-control" id="hijri-date-input" placeholder="<%= entry.dates %>"
+                            name="dates" autocomplete="off" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
+
+
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='dates'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+
+                    <label for="example-text-input1" class="col-md-1 col-form-label">صفحه کتاب</label>
+
+                    <div class="col-md-3<% if(typeof errors!== undefined){
+						errors.forEach(error=>{
+						if(error.name==='notExist'){%>
+						has-danger
+						<%} }) } %>">
+                        <select name="page" class="form-control">
+                            <% page.forEach(p=> { %>
+                            <option value="<%= p %>" <% if(p ==entry.registerBook_fk.page){ %> selected <% } %>>
+                                <%=p%>
+                            </option>
+                            <%})%>
+                        </select>
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='notExist'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+
+                    <label for="example-text-input1" class="col-md-1 col-form-label">جلدکتاب</label>
+
+                    <div class="col-md-3 <% if(typeof errors!== undefined){
+					errors.forEach(error=>{
+						if(error.name==='skin'){%>
+						has-danger
+                        <%} }) } %>">
+                        <select name="skin" class="form-control">
+                            <% skin.forEach(s => { %>
+                            <option value="<%= s %>" <% if(s ==entry.registerBook_fk.skin){ %> selected <% } %>>
+                                <%=s%>
+                            </option>
+                            <%})%>
+                        </select>
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+						if(error.name==='skin'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+
+                    <label for="example-text-input1" class="col-md-1 col-form-label">نام کتاب</label>
+
+                    <div class="col-md-3<% if(typeof errors!== undefined){
+						errors.forEach(error=>{
+						if(error.name==='nameBook'){%>
+						has-danger
+                        <%} }) } %>">
+
+                        <select name="nameBook" class="form-control">
+                            <% bookName.forEach(b => { %>
+                            <option value="<%= b %>" <% if(b ==entry.registerBook_fk.bookName){ %> selected <% } %>>
+                                <%=b%>
+                            </option>
+                            <%})%>
+                        </select>
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='nameBook'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+
+
+                    <label for="example-text-input1" class="col-md-1 col-form-label">نام کتاب راجستر </label>
+
+                    <div class="col-md-3 <% if(typeof errors!== undefined){
+					errors.forEach(error=>{
+						if(error.name==='year'){%>
+						has-danger
+						<%} }) } %>">
+                        <select name="year" class="form-control">
+                            <% year.forEach(y => { %>
+                            <option value="<%= y %> "><%=y%></option>
+                            <%})%>
+                        </select>
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+						if(error.name==='year'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+
+                    <label for="example-text-input1" class="col-md-1 col-form-label">ملاحضات</label>
+
+                    <div class="col-md-7<% if(typeof errors!== undefined){
+						errors.forEach(error=>{
+						if(error.name==='considration'){%>
+						has-danger
+						<%} }) } %>">
+                        <input class="form-control mb-1" type="text" value="<%=entry.considration%>"
+                            placeholder="ملاحضات" name="considration" id="example-text-input1">
+                        <% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='considration'){%>
+                        <div class="form-control-feedback">
+                            <%= error.message %>
+                        </div>
+                        <%} }) } %>
+                    </div>
+
+                    <div class=" overflow-hidden">
+
+                        <input type="hidden" name="lastId" value="<%= entry.goods_fk._id%>">
+                    </div>
+
+                </div>
+                <div class=" form-group row">
+                    <label for="example-number-input" class="col-md-1 col-form-label">ذخیره کردن</label>
+                    <div class="col-md-3">
+                        <button type="submit" class="btn btn-primary">ذخیره</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

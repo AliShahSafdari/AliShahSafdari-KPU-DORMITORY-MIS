@@ -1,0 +1,106 @@
+<!-- content -->
+<div class="content-area py-1">
+	<div class="container-fluid">
+		<h4>راجستر اتاق</h4>
+		<ol class="breadcrumb no-bg mb-1">
+			<li class="breadcrumb-item"><a href="/">خانه</a></li>
+			<li class="breadcrumb-item active">راجستر اتاق</li>
+		</ol>
+
+		<div class="box box-block bg-white">
+			<h5 style="text-align: center;">راجستر اتاق</h5>
+			<br>
+			<form action="/office-management/add-room" method="POST" class="<% if(typeof errors!==undefined){ errors.forEach(error=>{
+				if(error.name==='repeat'){%>
+				has-danger
+				<%} }) } %>">
+				<div class="col-xs-3"></div>
+				<% if(typeof errors!==undefined){ errors.forEach(error=>{
+					if(error.name==='repeat'){ %>
+					<h4>
+						<%= error.message %>
+					</h4>
+					<%} }) } %>
+						<br>
+						<div class="form-group row">
+							<div class="col-xs-3"></div>
+							<div class="col-xs-6">
+								<label for="example-text-input3" class="col-xs-2 col-form-label">اتاق</label>
+								<div class="col-xs-10">
+									<select class="form-control mb-1" name="roomNum" id="example-text-input3">
+										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+										<option>5</option>
+										<option>6</option>
+										<option>7</option>
+										<option>8</option>
+										<option>9</option>
+										<option>10</option>
+										<option>11</option>
+										<option>12</option>
+										<option>13</option>
+										<option>14</option>
+										<option>15</option>
+										<option>16</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-xs-3"></div>
+						</div>
+
+						<div class="form-group row<% if(typeof errors!== undefined){errors.forEach(error=>{if(error.name==='floorNum'){%>
+                            has-danger
+                    <%} }) } %>">
+							<div class="col-xs-3"></div>
+							<div class="col-xs-6">
+								<label for="example-text-input2" class="col-xs-2 col-form-label">منزل</label>
+								<div class="col-xs-10">
+									<select class="form-control mb-1" name="floorNum" id="example-text-input2">
+										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-xs-3"></div>
+						</div>
+
+						<div class="form-group row<% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='blockNum'){%>
+                            has-danger
+                    <%} }) } %>">
+							<div class="col-xs-3"></div>
+							<div class="col-xs-6">
+								<label for="example-text-input1" class="col-xs-2 col-form-label">بلاک</label>
+								<div class="col-xs-10">
+									<select class="form-control mb-1" id="example-text-input1" name="blockNum">
+										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-xs-3"></div>
+						</div>
+
+						<div class="form-group row">
+							<div class="col-xs-3"></div>
+							<div class="col-xs-6">
+								<hr>
+								<label for="example-number-input" class="col-xs-2 col-form-label">ذخیره کردن</label>
+								<div class="col-xs-10">
+									<button type="submit" class="btn btn-primary">ذخیره</button>
+								</div>
+							</div>
+							<div class="col-xs-3"></div>
+						</div>
+
+			</form>
+		</div>
+	</div>
+</div>

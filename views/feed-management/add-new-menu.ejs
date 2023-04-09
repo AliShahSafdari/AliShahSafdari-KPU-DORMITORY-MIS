@@ -1,0 +1,168 @@
+<!-- Content -->
+<div class="content-area py-1">
+	<div class="container-fluid">
+		<h4>ترتیب تابلوی حواله ی اعاشه سه وقت محصلین</h4>
+		<ol class="breadcrumb no-bg mb-1">
+			<li class="breadcrumb-item"><a href="/feed-management/show-daily-menus">مدیریت ارتزاقی</a></li>
+			<li class="breadcrumb-item active">ترتیب تابلوی حواله ی اعاشه سه وقت محصلین</li>
+		</ol>
+		<div class="box box-block bg-white">
+			<h4 style="text-align: center;">ترتیب تابلوی حواله اعاشه سه وقت محصلین</h4>
+			<br>
+			<form action="/feed-management/add-new-menu" method="POST">
+				<div class="row">
+					<div class="form-group">
+						<label for="example-text-input1" class="col-xs-1 col-form-label">نام تابلو</label>
+					</div>
+					<div class="form-group
+				<% if(typeof errors!== undefined){
+					errors.forEach(error=>{
+						if(error.name==='menuType'){%>
+                            has-danger
+							<%} }) } %>
+							">
+						<div class="col-xs-2">
+							<input class="form-control" type="text" value="" id="example-text-input1" name="menuType"
+								placeholder="نام تابلوی اعاشه" autocomplete="off">
+							<% if(typeof errors!==undefined){ errors.forEach(error=>{
+									if(error.name==='menuType'){%>
+							<div class="form-control-feedback">
+								<%= error.message %>
+							</div>
+							<%} }) } %>
+						</div>
+						<div class="col-xs-4"></div>
+					</div>
+				</div>
+				<br>
+				<h3 style="text-align: center;">دیپو</h3>
+				<div class="form-group row">
+					<label class="col-xs-1 col-form-label">
+						<h6>شماره</h6>
+					</label>
+					<label class="col-xs-2 col-form-label">
+						<h6>نام جنس</h6>
+					</label>
+					<label class="col-xs-2 col-form-label">
+						<h6>استحقاق یک نفر صبح (گرام)</h6>
+					</label>
+					<label class="col-xs-2 col-form-label">
+						<h6>استحقاق یک نفر چاشت (گرام)</h6>
+					</label>
+					<label class="col-xs-2 col-form-label">
+						<h6>استحقاق یک نفر شب (گرام)</h6>
+					</label>
+					<label class="col-xs-2 col-form-label">
+						<h6>کالوری</h6>
+					</label>
+				</div>
+				<% for(let i = 1; i <= 10; i++) { %>
+				<div class="form-group row
+					<% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name===`ingradient_stock_${i}`){%>
+                            has-danger
+                    <%} }) } %>
+					">
+					<% if(typeof errors!==undefined){ errors.forEach(error=>{
+						if(error.name===`ingradient_stock_${i}`){%>
+					<div class="form-control-feedback">
+						<%= error.message %>
+					</div>
+					<%} }) } %>
+					<div class="col-md-1"><%= i;%>)</div>
+					<div class="col-xs-2">
+						<select name="ingradient_stock" class="form-control">
+							<option value="" class="active">انتخاب جنس</option>
+							<% ingradients.forEach(element => { %>
+							<option value="<%= element.id %>"><%= element.ingradient %></option>
+							<% }); %>
+						</select>
+					</div>
+					<div class="col-xs-2">
+						<input class="form-control" type="number" step="any" min="0" max="1000"
+							name="morningIngradientAmount_stock" placeholder="0.00 gr">
+					</div>
+					<div class="col-xs-2">
+						<input class="form-control" type="number" step="any" min="0" max="1000"
+							name="noonIngradientAmount_stock" placeholder="0.00 gr">
+					</div>
+					<div class="col-xs-2">
+						<input class="form-control" type="number" step="any" min="0" max="1000"
+							name="nightIngradientAmount_stock" placeholder="0.00 gr">
+					</div>
+					<div class="col-xs-2">
+						<input class="form-control" type="number" step="any" min="0" max="10000" name="calory_stock"
+							placeholder="0 calory">
+					</div>
+				</div>
+				<% } %>
+				<br>
+				<h3 style="text-align: center;">تازه</h3>
+				<div class="form-group row">
+					<label class="col-xs-1 col-form-label">
+						<h6>شماره</h6>
+					</label>
+					<label class="col-xs-2 col-form-label">
+						<h6>نام جنس</h6>
+					</label>
+					<label class="col-xs-2 col-form-label">
+						<h6>(گرام) استحقاق یک نفر صبح</h6>
+					</label>
+					<label class="col-xs-2 col-form-label">
+						<h6>(گرام) استحقاق یک نفر چاشت</h6>
+					</label>
+					<label class="col-xs-2 col-form-label">
+						<h6>(گرام) استحقاق یک نفر شب</h6>
+					</label>
+					<label class="col-xs-2 col-form-label">
+						<h6>کالوری</h6>
+					</label>
+				</div>
+				<% for(let i = 1; i <= 10; i++) { %>
+				<div class="form-group row
+					<% if(typeof errors!== undefined){
+				        errors.forEach(error=>{
+				        if(error.name===`ingradient_m7_${i}`){%>
+	                        has-danger
+					   <%} }) } %>
+					">
+					<% if(typeof errors!==undefined){ errors.forEach(error=>{
+						if(error.name===`ingradient_m7_${i}`){%>
+					<div class="form-control-feedback">
+						<%= error.message %>
+					</div>
+					<%} }) } %>
+					<div class="col-md-1"><%= i;%>)</div>
+					<div class="col-xs-2">
+						<input class="form-control" type="text" name="ingradient_m7" value="" placeholder="نام جنس">
+					</div>
+					<div class="col-xs-2">
+						<input class="form-control" type="number" step="any" min="0" max="1000"
+							name="morningIngradientAmount_m7" placeholder="0.00 gr">
+					</div>
+					<div class="col-xs-2">
+						<input class="form-control" type="number" step="any" min="0" max="1000"
+							name="noonIngradientAmount_m7" placeholder="0.00 gr">
+					</div>
+					<div class="col-xs-2">
+						<input class="form-control" type="number" step="any" min="0" max="1000"
+							name="nightIngradientAmount_m7" placeholder="0.00 gr">
+					</div>
+					<div class="col-xs-2">
+						<input class="form-control" type="number" step="any" min="0" max="10000" name="calory_m7"
+							placeholder="0 calory">
+					</div>
+				</div>
+				<% } %>
+				<div class="form-group row">
+					<label for="example-number-input" class="col-xs-1 col-form-label">ثبت</label>
+					<div class="col-xs-11">
+						<button type="submit" class="btn btn-primary">ذخیره</button>
+					</div>
+				</div>
+			</form>
+		</div>
+
+	</div>
+</div>

@@ -1,0 +1,129 @@
+<!-- content -->
+<div class="content-area py-1">
+    <div class="container-fluid">
+        <h4>راجستر کتاب</h4>
+        <ol class="breadcrumb no-bg mb-1">
+            <li class="breadcrumb-item"><a href="/">خانه</a></li>
+            <li class="breadcrumb-item active">راجستر کتاب</li>
+        </ol>
+
+        <div class="box box-block bg-white">
+            <h5 style="text-align: center;">راجستر کتاب</h5>
+            <br>
+            <form action="/goods-management/edit-bookRegister/<%=bookRegister.id %>" method="POST">
+                <br>
+
+                <div class="form-group row ">
+                    <div class="col-xs-3"></div>
+
+                    <div class="col-xs-6">
+                        <label for="example-text-input1" class="col-xs-2 col-form-label">نام کتاب</label>
+                        <div class="col-xs-10  
+                        <% if(typeof errors!== undefined){
+					errors.forEach(error=>{
+						if(error.name==='bookName'){%>
+                    has-danger
+                    <%} }) } %>">
+                            <input class="form-control" type="text" value="<%=bookRegister.bookName%>"
+                                placeholder="نام کتاب" name="bookName" id="example-text-input1">
+                            <% if(typeof errors!==undefined){ errors.forEach(error=>{
+			            	if(error.name==='bookName'){%>
+                            <div class="form-control-feedback">
+                                <%= error.message %>
+                            </div>
+                            <%} }) } %>
+                        </div>
+                    </div>
+
+
+                    <div class="col-xs-3"></div>
+                </div>
+
+                <div class="form-group row ">
+                    <div class="col-xs-3"></div>
+                    <div class="col-xs-6">
+                        <label for="example-text-input2" class="col-xs-2 col-form-label">جلد</label>
+                        <div class="col-xs-10 
+                        <% if(typeof errors!== undefined){
+					errors.forEach(error=>{
+						if(error.name==='skin'){%>
+                        has-danger
+                        <%} }) } %>
+                        ">
+                            <input class="form-control" type="number" min="0" value="<%=bookRegister.skin%>" name="skin"
+                                id="example-text-input2">
+                            <% if(typeof errors!==undefined){ errors.forEach(error=>{
+				            if(error.name==='skin'){%>
+                            <div class="form-control-feedback">
+                                <%= error.message %>
+                            </div>
+                            <%} }) } %>
+                        </div>
+                    </div>
+                    <div class="col-xs-3"></div>
+                </div>
+
+                <div class="form-group row ">
+                    <div class="col-xs-3"></div>
+                    <div class="col-xs-6">
+                        <label for="example-text-input3" class="col-xs-2 col-form-label">صفحه</label>
+                        <div class="col-xs-10 
+                        <% if(typeof errors!== undefined){
+					errors.forEach(error=>{
+						if(error.name==='page'){%>
+                        has-danger
+                        <%} }) } %>
+                        ">
+                            <input class="form-control" type="number" min="0" value="<%=bookRegister.page%>" name="page"
+                                id="example-text-input3">
+                            <% if(typeof errors!==undefined){ errors.forEach(error=>{
+				            if(error.name==='page'){%>
+                            <div class="form-control-feedback">
+                                <%= error.message %>
+                            </div>
+                            <%} }) } %>
+                        </div>
+                    </div>
+                    <div class="col-xs-3"></div>
+                </div>
+
+                <div class="form-group row ">
+                    <div class="col-xs-3"></div>
+                    <div class="col-xs-6">
+                        <label for="example-text-input4" class="col-xs-2 col-form-label">سال</label>
+                        <div class="col-xs-10 
+                        <% if(typeof errors!== undefined){
+					errors.forEach(error=>{
+						if(error.name==='year'){%>
+                        has-danger
+                        <%} }) } %>
+                        ">
+                            <input class="form-control" type="number" min="1343" value="<%=bookRegister.year%>"
+                                placeholder="سال" name="year" id="example-text-input4">
+                            <% if(typeof errors!==undefined){ errors.forEach(error=>{
+		            		if(error.name==='year'){%>
+                            <div class="form-control-feedback">
+                                <%= error.message %>
+                            </div>
+                            <%} }) } %>
+                        </div>
+                    </div>
+                    <div class="col-xs-3"></div>
+                </div>
+
+                <hr>
+                <div class="form-group row ">
+                    <div class="col-xs-3"></div>
+                    <div class="col-xs-6">
+                        <label for="example-number-input" class="col-xs-2 col-form-label">ذخیره کردن</label>
+                        <div class="col-xs-10">
+                            <button type="submit" class="btn btn-primary">ذخیره</button>
+                        </div>
+                    </div>
+                    <div class="col-xs-3"></div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

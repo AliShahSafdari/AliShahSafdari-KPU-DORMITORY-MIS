@@ -1,0 +1,55 @@
+<!-- Content -->
+<div class="content-area py-1">
+	<div class="container-fluid">
+		<h4>ثبت اجناس جدید</h4>
+		<ol class="breadcrumb no-bg mb-1">
+			<li class="breadcrumb-item"><a href="index.html">خانه</a></li>
+			<li class="breadcrumb-item"><a href="/goods-management">مدیریت جنسی</a></li>
+			<li class="breadcrumb-item active">ثبت اجناس جدید</li>
+		</ol>
+
+		<div class="box box-block bg-white">
+			<h5 style="text-align: center;">ثبت اجناس جدید در دیپو - یکشنبه 21 اسد سال 1402</h5>
+			<br>
+
+			<form action="/goods-management/add-goods" method="POST">
+				<br>
+
+
+				<div class="form-group row">
+
+					<div class="col-xs-2"></div>
+					<label for="example-text-input1" class="col-xs-1 col-form-label">نام جنس</label>
+
+					<div class="col-xs-6<% if(typeof errors!== undefined){
+						errors.forEach(error=>{
+							if(error.name==='name'){%>
+		has-danger
+		<%} }) } %>">
+						<input class="form-control mb-1" type="text" placeholder="نام جنس" name="name"
+							id="example-text-input1">
+						<% if(typeof errors!==undefined){ errors.forEach(error=>{
+							if(error.name==='name'){%>
+						<div class="form-control-feedback">
+							<%= error.message %>
+						</div>
+						<%} }) } %>
+					</div>
+					<div class="col-xs-2"></div>
+
+				</div>
+
+				<hr>
+				<div class="form-group row">
+					<div class=" col-xs-3"></div>
+					<label for="example-number-input" class="col-xs-1 col-form-label">ذخیره کردن</label>
+					<div class="col-xs-6">
+
+						<button type="submit" class="btn btn-primary">ذخیره</button>
+					</div>
+					<div class="col-xs-2"></div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

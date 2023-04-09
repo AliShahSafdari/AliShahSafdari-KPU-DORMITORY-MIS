@@ -1,0 +1,195 @@
+<!-- table -->
+<!-- Content -->
+<div class="content-area py-1">
+    <div class="container-fluid">
+        <h4>نمایش لیست اجناس</h4>
+        <ol class="breadcrumb no-bg mb-1">
+
+            <li class="breadcrumb-item"><a href="index.html">خانه</a></li>
+            <li class="breadcrumb-item"><a href="/goods-management">مدیریت جنسی</a></li>
+            <li class="breadcrumb-item active">نمایش لیست اجناس</li>
+        </ol>
+        <!-- <%- include("../includes/messages") %> -->
+        <div class="box box-block bg-white">
+            <div class="row">
+                <div class="col-xs-4">
+                    <button class="btn btn-primary inline" data-toggle="modal" data-target=".large-modal2">
+                        <li class="fa "> مشحضات کارمند</li>
+                    </button>
+                </div>
+                <div class="col-xs-6">
+                    <h3 class="mb-1">اجناس گرفته شده <%=staffkits.staff_fk.name%></h3>
+                </div>
+                <div class="col-xs-1 pull-left">
+                    <a href="/goods-management/show-staffKits">
+                        <span class=" fa fa-arrow-circle-o-left fa-2x" style="color:rgb(31, 219, 31);"></span>
+                    </a>
+                </div>
+            </div>
+            <br>
+            <table class="table table-striped table-bordered dataTable" id="">
+
+                <thead>
+                    <tr>
+                        <th>نام جنس</th>
+                        <th>تعداد جنس</th>
+                        <th>قیمت مجموعی جنس</th>
+                        <th>سال گرفته شده</th>
+                        <th>حالت</th>
+                        <th>نام کتاب</th>
+                        <th>جلد</th>
+                        <th> صفحه کتاب</th>
+                        <th>سال کتاب</th>
+                        <th>ویرایش</th>
+                        <th>حذف</th>
+                        <th>ریست</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+
+                        <td> <%=staffkits.goods_fk.name%> </td>
+                        <td><%=staffkits.goodAmount%></td>
+                        <td><%=parseInt(staffkits.goods_fk.price)*parseInt(staffkits.goodAmount) %></td>
+                        <td><%=staffkits.Dates%></td>
+                        <% let flag = true%>
+                        <% if(parseInt( staffkits.goodAmount)>0){flag =false} %>
+                        <%if(flag){%>
+                        <td>رسید</td>
+                        <% }else{%>
+                        <td>باقی</td>
+                        <%}%> 
+                        <td><%=staffkits.registerBook_fk.bookName%></td>
+                        <td><%=staffkits.registerBook_fk.skin%></td>
+                        <td><%=staffkits.registerBook_fk.page%></td>
+                        <td><%=staffkits.registerBook_fk.year%></td>
+                        <% if (user.position === "مدیر جنسی") { %>
+                        <td style="text-align: center;">
+                            <a href="/goods-management/edit-oneStaffKit/<%=staffkits._id  %>"">
+                                        <span class=" fa fa-edit" style="color:rgb(31, 219, 31);"></span>
+                            </a>
+                        </td>
+                        <td style="text-align: center;">
+                            <a data-toggle="modal" data-target="#confirm" onclick="sendId(event)"
+                                href="<%=staffkits._id  %>">
+                                <span class="fa fa-trash-o" style="color:red"></span>
+                            </a>
+                        </td>
+                        <td style="text-align: center;">
+                            <a data-toggle="modal" data-target="#confirm1" onclick="sendId(event)"
+                                href="<%=staffkits._id  %>">
+                                <span class="fa fa-undo" style="color:blue"></span>
+                            </a>
+                        </td>
+
+                        <%}%>
+    
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+      
+        <div class="modal animated bounceInUp small-modal" id="confirm1" tabindex="-1" role="dialog"
+            aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <h4 class="modal-title" id="mySmallModalLabel">هشدار!!!</h4>
+
+                    </div>
+                    <div class="modal-body">
+                        آیا از رسیت اطلاعات این جنس گرفته شده کارمند مطمعین هستید؟
+                    </div>
+                    <div class="modal-footer">
+                        <a href="" id="reseting" class="btn btn-danger col-md-5" style="margin-right: 0px;">بله</a>
+                        <span class="col-md-2"></span>
+                        <a href="" class="btn btn-primary col-md-5" style="margin-left: 0px;">خیر</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- deleting confirmation modal -->
+        <div class="modal animated bounceInUp small-modal" id="confirm" tabindex="-1" role="dialog"
+            aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <h4 class="modal-title" id="mySmallModalLabel">هشدار!!!</h4>
+
+                    </div>
+                    <div class="modal-body">
+                        آیا از حذف اطلاعات این جنس گرفته شده کارمند مطمعین هستید؟
+                    </div>
+                    <div class="modal-footer">
+                        <a href="" id="delete" class="btn btn-danger col-md-5" style="margin-right: 0px;">بله</a>
+                        <span class="col-md-2"></span>
+                        <a href="" class="btn btn-primary col-md-5" style="margin-left: 0px;">خیر</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+
+<script>
+    function sendId(ev) {
+
+        let resetRout = "/goods-management/reset-oneStaffKit/" + ev.currentTarget.getAttribute("href");
+        document.getElementById("reseting").setAttribute("href", resetRout);
+
+        let deleteRout = "/goods-management/delete-oneStaffKit/" + ev.currentTarget.getAttribute("href");
+        document.getElementById("delete").setAttribute("href", deleteRout);
+    }
+</script>
+<div class="modal fade large-modal2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="mySmallModalLabel">مشحضات کارمند که جنس گرفته</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped table-bordered dataTable" id="">
+                    <thead>
+                        <tr>
+                            <th>اسم</th>
+                            <th>ولد</th>
+                            <th>ولدیت</th>
+                            <th>وظیفه</th>
+                            <th>ولایت</th>
+                            <th>ولسوالی</th>
+                            <th>نمبرتذکره</th>
+                            <th> آدی کارت</th>
+                            <th>شماره تماس</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><%=staffkits.staff_fk.name%></td>
+                        <td><%=staffkits.staff_fk.fName%></td>
+                        <td><%=staffkits.staff_fk.gFName%></td>
+                        <td><%=staffkits.staff_fk.Job%></td>
+                        <td><%=staffkits.staff_fk.province%></td>
+                        <td><%=staffkits.staff_fk.destrict%></td>
+                        <td><%=staffkits.staff_fk.tazkiraNum%></td>
+                        <td><%=staffkits.staff_fk.idCard%></td>
+                        <td><%=staffkits.staff_fk.phoneNum%></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+</div>

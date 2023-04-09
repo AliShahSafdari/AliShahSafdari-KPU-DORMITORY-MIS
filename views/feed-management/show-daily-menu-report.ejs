@@ -1,0 +1,85 @@
+<!-- table -->
+<!-- Content -->
+<div class="content-area py-1">
+	<div class="container-fluid">
+		<h4>گزارش خریداری اعاشه یومیه</h4>
+		<ol class="breadcrumb no-bg mb-1">
+			<li class="breadcrumb-item"><a href="/feed-management/show-daily-menus">مدیریت ارتزاقی</a></li>
+			<li class="breadcrumb-item active">گزارش خریداری اعاشه یومیه</li>
+		</ol>
+		<div class="box box-block bg-white">
+			<h5 class="mb-1" style="text-align: center;">گزارش خریداری اعاشه یومیه تاریخ
+				(<%= formDate(report[0].dailyMenu_fk.date) %>)</h5>
+			<br>
+			<% const stockIngradients = []; %>
+			<form action="/feed-management/daily-purchase-menu" method="POST">
+				<input type="hidden" name="menuId" value="<%= id %>">
+				<table class="table table-striped table-bordered dataTable">
+					<thead>
+						<tr>
+							<th>شماره</th>
+							<th>جنس</th>
+							<th>مقدار مجموعی (کیلو گرام)</th>
+							<th>خرید</th>
+							<th>نوعیت جنس</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% let i = 1; let flagStock = false; let flagM7 = false; %>
+						<% report.forEach((element) => { %>
+						<tr>
+							<td><%= i++ %></td>
+							<td><%= element.ingradient %></td>
+							<td><%= element.totalIngradientAmount %></td>
+
+
+							<% if(element.ingradientType != "stock") { %>
+
+							<td><% if(element.status == "pending") { flagM7 = true; %> <b style="color: red;">خریداری
+									نشده</b>
+								<% if (user.position === "مدیر ارتزاقی") { %>
+								<input type="checkbox" name="ingradient" value="<%= element.id %>">
+								<% } } else { %>
+								<b style=" color: green;">خریداری شده</b>
+								<% } %>
+							</td>
+
+							<% } else { %>
+
+							<td><% if(element.status == "pending") { flagStock = true; %> <b style="color: red;">خارج
+									نشده</b>
+								<!-- <input type="checkbox" name="ingradient" value="<%= //element.id %>"> -->
+								<% stockIngradients.push({elementId: element.id}) %>
+								<% } else { %>
+								<b style=" color: green;">خارج شده از دیپو</b>
+								<% } %>
+							</td>
+							<!-- <td>
+								<b style=" color: green;">خارج شده از دیپو</b>
+							</td> -->
+							<% } %>
+
+
+							<td><% if(element.ingradientType == "stock") { %> دیپو <% } else { %> خرید روزانه
+								(م-7)<% } %>
+							</td>
+						</tr>
+						<% }) %>
+					</tbody>
+				</table>
+				<% if(flagM7){ %>
+				<% if (user.position === "مدیر ارتزاقی") { %>
+				<input type="submit" class="btn btn-primary" value="خرید اجناس تازه">
+				<% } } %>
+			</form>
+			<br>
+			<% if(flagStock){ %>
+			<% if (user.position === "مدیر ارتزاقی") { %>
+			<a href="/feed-management/daily-purchase-menu-stock/<%= report[0].dailyMenu_fk.id %>"><button
+					class="btn btn-primary">خرید اجناس
+					دیپو</button></a>
+			<% } } %>
+			<br>
+		</div>
+	</div>
+</div>

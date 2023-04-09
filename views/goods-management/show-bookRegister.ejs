@@ -1,0 +1,209 @@
+<!-- table -->
+<!-- Content -->
+<div class="content-area py-1">
+    <div class="container-fluid">
+        <h4>نمایش لیست کتاب</h4>
+        <ol class="breadcrumb no-bg mb-1">
+            <li class="breadcrumb-item"><a href="index.html">خانه</a></li>
+            <li class="breadcrumb-item"><a href="/goods-management">مدیریت جنسی</a></li>
+            <li class="breadcrumb-item active">نمایش لیست کتاب</li>
+        </ol>
+
+        <%if(errors.length>0 || typeof message.error_msg !== 'undefined' ){%>
+        <% if(user.position!=="آمر لیلیه" ){ %>
+
+        <script type="text/javascript">
+            $(window).on('load', () => $('.large-modal').modal('show'));
+        </script>
+        <%} %>
+
+        <%} %>
+        <% if(bookRegisters.length>0){ %>
+
+        <div class="box box-block bg-white table-responsive">
+
+            <% if(user.position!=="آمر لیلیه" ){ %>
+            <button class="btn btn-primary inline" name="button1" data-toggle="modal" data-target=".large-modal">
+                <li class="fa "> ثبت کتاب</li>
+            </button>
+            <%}%>
+    
+            <br> <br>
+            <table class="table table-striped table-bordered dataTable" id="table-2">
+                <thead>
+                    <tr>
+                        <th> نام کتاب</th>
+                        <th>جلد</th>
+                        <th>صفحه</th>
+                        <th>سال</th>
+                        <% if(user.position!=="آمر لیلیه" ){ %>
+            <th>نمایش کتاب</th>
+            <%}%>       
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(let bookRegister of bookRegisters){ %>
+            <tr>
+                <td>
+
+                    <%= bookRegister.bookName %>
+                </td>
+                <td>
+                    <%= bookRegister.skin %>
+                </td>
+                <td>
+                    <%= bookRegister.page %>
+                </td>
+                <td>
+                    <%= bookRegister.year %>
+                </td>
+                <td>
+                    <% if(user.position!=="آمر لیلیه" ){ %>
+                    <a href="/goods-management/show-oneBookRegister/<%=bookRegister._id %>" id="show_student">
+                        <span class="fa fa-eye"></span>
+                    </a>
+                    <%}%>
+            </td>
+            </tr>
+            <% } %>
+                    </tbody>
+                    </table>
+        </div>
+
+        <% }else{ %>
+        <div class="m-2">            
+            <h2 class="center">در حال حاظر هیچ کتاب توسط شما در دیتابس ثبت نشده است</h2>
+        </div>
+        <% } %>
+    </div>
+</div>
+
+
+<!-- this part depend to register of books -->
+<div class="modal fade large-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="mySmallModalLabel">ثبت کتاب</h4>
+            </div>
+            <div class="modal-body">
+                <form action="/goods-management/show-bookRegister" method="POST">
+                    <br>
+
+                    <div class="form-group row ">
+                        <div class="col-xs-3"></div>
+
+                        <div class="col-xs-6">
+                            <label for="example-text-input1" class="col-xs-2 col-form-label">نام کتاب</label>
+                            <div class="col-xs-10  
+                            <% if(typeof errors!== undefined){
+                        errors.forEach(error=>{
+                            if(error.name==='bookName'){%>
+                        has-danger
+                        <%} }) } %>">
+                                <input class="form-control" type="text" placeholder="نام کتاب" name="bookName"
+                                    id="example-text-input1">
+                                <% if(typeof errors!==undefined){ errors.forEach(error=>{
+                                if(error.name==='bookName'){%>
+                                <div class="form-control-feedback">
+                                    <%= error.message %>
+                                </div>
+                                <%} }) } %>
+                            </div>
+                        </div>
+
+
+                        <div class="col-xs-3"></div>
+                    </div>
+
+                    <div class="form-group row ">
+                        <div class="col-xs-3"></div>
+                        <div class="col-xs-6">
+                            <label for="example-text-input2" class="col-xs-2 col-form-label">جلد</label>
+                            <div class="col-xs-10 
+                            <% if(typeof errors!== undefined){
+                        errors.forEach(error=>{
+                            if(error.name==='skin'){%>
+                            has-danger
+                            <%} }) } %>
+                            ">
+                                <input class="form-control" type="number" min="0" value="0" name="skin"
+                                    id="example-text-input2">
+                                <% if(typeof errors!==undefined){ errors.forEach(error=>{
+                                if(error.name==='skin'){%>
+                                <div class="form-control-feedback">
+                                    <%= error.message %>
+                                </div>
+                                <%} }) } %>
+                            </div>
+                        </div>
+                        <div class="col-xs-3"></div>
+                    </div>
+
+                    <div class="form-group row ">
+                        <div class="col-xs-3"></div>
+                        <div class="col-xs-6">
+                            <label for="example-text-input3" class="col-xs-2 col-form-label">صفحه</label>
+                            <div class="col-xs-10 
+                            <% if(typeof errors!== undefined){
+                        errors.forEach(error=>{
+                            if(error.name==='page'){%>
+                            has-danger
+                            <%} }) } %>
+                            ">
+                                <input class="form-control" type="number" min="0" value="0" name="page"
+                                    id="example-text-input3">
+                                <% if(typeof errors!==undefined){ errors.forEach(error=>{
+                                if(error.name==='page'){%>
+                                <div class="form-control-feedback">
+                                    <%= error.message %>
+                                </div>
+                                <%} }) } %>
+                            </div>
+                        </div>
+                        <div class="col-xs-3"></div>
+                    </div>
+
+                    <div class="form-group row ">
+                        <div class="col-xs-3"></div>
+                        <div class="col-xs-6">
+                            <label for="example-text-input4" class="col-xs-2 col-form-label">سال</label>
+                            <div class="col-xs-10 
+                            <% if(typeof errors!== undefined){
+                        errors.forEach(error=>{
+                            if(error.name==='year'){%>
+                            has-danger
+                            <%} }) } %>
+                            ">
+                                <input class="form-control" type="number" min="1343" max="1450" value="1401" name="year"
+                                    id="example-text-input4">
+                                <% if(typeof errors!==undefined){ errors.forEach(error=>{
+                                if(error.name==='year'){%>
+                                <div class="form-control-feedback">
+                                    <%= error.message %>
+                                </div>
+                                <%} }) } %>
+                            </div>
+                        </div>
+                        <div class="col-xs-3"></div>
+                    </div>
+                    <hr>
+                    <div class="form-group row ">
+                        <div class="col-xs-3"></div>
+                        <div class="col-xs-6">
+                            <label for="example-number-input" class="col-xs-2 col-form-label">ذخیره کردن</label>
+                            <div class="col-xs-10">
+                                <button type="submit" class="btn btn-primary">ذخیره</button>
+                            </div>
+                        </div>
+                        <div class="col-xs-3"></div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,252 @@
+<!-- Content -->
+<div class="content-area py-1">
+    <div class="container-fluid">
+        <h4>اضافه کردن اکانت جدید</h4>
+        <ol class="breadcrumb no-bg mb-1">
+            <li class="breadcrumb-item"><a href="/">خانه</a></li>
+            <li class="breadcrumb-item active">آمریت لیلیه</li>
+            <li class="breadcrumb-item active">اضافه کردن اکانت جدید</li>
+        </ol>
+
+        <div class="box box-block bg-white">
+            <h5 style="text-align: center;">اضافه کردن اکانت جدید</h5>
+            <br>
+            <form action="/admin/create-new-user" method="POST">
+                <br>
+                <div class="form-group row
+                <% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='fullname'){%>
+                            has-danger
+                    <%} }) } %>
+                ">
+                    <div class="col-xs-3"></div>
+                    <div class="col-xs-6">
+                        <label for="example-text-input1" class="col-xs-2 col-form-label">نام کاربری</label>
+                        <div class="col-xs-10">
+                            <input class="form-control" type="text" placeholder="نام و تخلص" name="fullname"
+                                id="example-text-input1">
+                            <% if(typeof errors!==undefined){ errors.forEach(error=>{
+                                if(error.name==='fullname'){%>
+                                <div class="form-control-feedback">
+                                    <%= error.message %>
+                                </div>
+                                <%} }) } %>
+                        </div>
+                    </div>
+                    <div class="col-xs-3"></div>
+                </div>
+                <div class="form-group row
+                <% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='email'){%>
+                            has-danger
+                    <%} }) } %>
+                ">
+                    <div class="col-xs-3"></div>
+                    <div class="col-xs-6">
+                        <label for="example-text-input1" class="col-xs-2 col-form-label">ایمیل</label>
+                        <div class="col-xs-10">
+                            <input class="form-control" name="email" type="email" placeholder="waisalizada35@gmail.com"
+                                id="example-text-input1">
+                            <% if(typeof errors!==undefined){ errors.forEach(error=>{
+                                if(error.name==='email'){%>
+                                <div class="form-control-feedback">
+                                    <%= error.message %>
+                                </div>
+                                <%} }) } %>
+                        </div>
+                    </div>
+                    <div class="col-xs-3"></div>
+                </div>
+
+                
+                <div class="form-group row
+                <% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='position'){%>
+                            has-danger
+                    <%} }) } %>
+                ">
+                    <div class="col-xs-3"></div>
+                    <div class="col-xs-6">
+                        <label for="example-text-input3" class="col-xs-2 col-form-label">مقام</label>
+                        <div class="col-xs-10">
+                            <select class="form-control mb-1" name="position" id="example-text-input3">
+                                <option>مدیر اداری</option>
+                                <option>مدیر جنسی</option>
+                                <option>مدیر ارتزاقی</option>
+                                <option>آمر لیلیه</option>
+                            </select>
+                            <% if(typeof errors!==undefined){ errors.forEach(error=>{
+                                if(error.name==='position'){%>
+                                <div class="form-control-feedback">
+                                    <%= error.message %>
+                                </div>
+                                <%} }) } %>
+                        </div>
+                    </div>
+                    <div class="col-xs-3"></div>
+                </div>
+
+                <div class="form-group row
+                <% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='firstQuestion'){%>
+                            has-danger
+                    <%} }) } %>
+                ">
+                    <div class="col-xs-3"></div>
+                    <div class="col-xs-6">
+                        <label for="example-text-input3" class="col-xs-2 col-form-label">سوال اول امنیتی اولی</label>
+                        <div class="col-xs-10">
+                            <select class="form-control mb-1" id="example-text-input3" name="firstOption">
+                                <option>رنگ دلخواه</option>
+                                <option>موتر مورد علاقه</option>
+                                <option>مهم ترین فرد زندگی</option>
+                                <option>مقدار اولین معاش ات؟</option>
+                                <option>نام بهترین دوست</option>
+                                <option>نام مکتبی که درس خوانده ایی</option>
+                                <option>نام فرزند ات؟</option>
+                            </select>
+                            <input type="text" class="form-control"  name="firstQuestion">
+                            <% if(typeof errors!==undefined){ errors.forEach(error=>{
+                                if(error.name==='firstQuestion'){%>
+                                <div class="form-control-feedback">
+                                    <%= error.message %>
+                                </div>
+                                <%} }) } %>
+                        </div>
+                    </div>
+                    <div class="col-xs-3"></div>
+                </div>
+
+                <div class="form-group row
+                <% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='secondQuestion'){%>
+                            has-danger
+                    <%} }) } %>
+                ">
+                    <div class="col-xs-3"></div>
+                    <div class="col-xs-6">
+                        <label for="example-text-input3" class="col-xs-2 col-form-label">سوال امنیتی دوم</label>
+                        <div class="col-xs-10">
+                            <select class="form-control mb-1" name="secondOption" id="example-text-input3">
+                                <option>رنگ دلخواه</option>
+                                <option>موتر مورد علاقه</option>
+                                <option>مهم ترین فرد زندگی</option>
+                                <option>مقدار اولین معاش ات؟</option>
+                                <option>نام بهترین دوست</option>
+                                <option>نام مکتبی که درس خوانده ایی</option>
+                                <option>نام فرزند ات؟</option>
+                            </select>
+                            <input type="text" class="form-control" name="secondQuestion">
+                            <% if(typeof errors!==undefined){ errors.forEach(error=>{
+                                if(error.name==='secondQuestion'){%>
+                                <div class="form-control-feedback">
+                                    <%= error.message %>
+                                </div>
+                                <%} }) } %>
+                        </div>
+                    </div>
+                    <div class="col-xs-3"></div>
+                </div>
+
+
+                <div class="form-group row
+                <% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='thirdQuestion'){%>
+                            has-danger
+                    <%} }) } %>
+                ">
+                    <div class="col-xs-3"></div>
+                    <div class="col-xs-6">
+                        <label for="example-text-input3" class="col-xs-2 col-form-label">سوال امنیتی سوم</label>
+                        <div class="col-xs-10">
+                            <select class="form-control mb-1" name="thirdOption" id="example-text-input3">
+                                <option>رنگ دلخواه</option>
+                                <option>موتر مورد علاقه</option>
+                                <option>مهم ترین فرد زندگی</option>
+                                <option>مقدار اولین معاش ات؟</option>
+                                <option>نام بهترین دوست</option>
+                                <option>نام مکتبی که درس خوانده ایی</option>
+                                <option>نام فرزند ات؟</option>
+                            </select>
+                            <input type="text" class="form-control" name="thirdQuestion">                              x
+                            <% if(typeof errors!==undefined){ errors.forEach(error=>{
+                                if(error.name==='thirdQuestion'){%>
+                                <div class="form-control-feedback">
+                                    <%= error.message %>
+                                </div>
+                                <%} }) } %>
+                        </div>
+                    </div>
+                    <div class="col-xs-3"></div>
+                </div>
+
+
+                <div class="form-group row
+                <% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='password'){%>
+                            has-danger
+                    <%} }) } %>
+                ">
+                    <div class="col-xs-3"></div>
+                    <div class="col-xs-6">
+                        <label for="example-text-input2" class="col-xs-2 col-form-label">پسورد</label>
+                        <div class="col-xs-10">
+                            <input class="form-control" type="password" placeholder="پسورد" name="password"
+                                id="example-text-input2">
+                            <% if(typeof errors!==undefined){ errors.forEach(error=>{
+                                if(error.name==='password'){%>
+                                <div class="form-control-feedback">
+                                    <%= error.message %>
+                                </div>
+                                <%} }) } %>
+                        </div>
+                    </div>
+                    <div class="col-xs-3"></div>
+                </div>
+
+                <div class="form-group row
+                <% if(typeof errors!== undefined){
+                    errors.forEach(error=>{
+                        if(error.name==='confirmPassword'){%>
+                            has-danger
+                    <%} }) } %>
+                ">
+                    <div class="col-xs-3"></div>
+                    <div class="col-xs-6">
+                        <label for="example-text-input3" class="col-xs-2 col-form-label">تايید پسورد</label>
+                        <div class="col-xs-10">
+                            <input class="form-control" type="password" name="confirmPassword" placeholder="تکرار پسورد"
+                                id="example-text-input3">
+                            <% if(typeof errors!==undefined){ errors.forEach(error=>{
+                                if(error.name==='confirmPassword'){%>
+                                <div class="form-control-feedback">
+                                    <%= error.message %>
+                                </div>
+                                <%} }) } %>
+                        </div>
+                    </div>
+                    <div class="col-xs-3"></div>
+                </div>
+
+                <div class="form-group row ">
+                    <div class="col-xs-3"></div>
+                    <div class="col-xs-6">
+                        <hr>
+                        <label for="example-number-input" class="col-xs-2 col-form-label">تايید و ارسال</label>
+                        <div class="col-xs-10">
+                            <button type="submit" class="btn btn-primary">اضافه کردن کاربر</button>
+                        </div>
+                    </div>
+                    <div class="col-xs-3"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
